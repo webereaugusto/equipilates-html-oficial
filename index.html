@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EquiPilates | Redefinindo o Futuro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">
+            <img src="images/logo.png" alt="EquiPilates" class="logo-img">
+        </div>
+        <div class="nav-menu">
+            <a href="#hero">Início</a>
+            <a href="#manifesto">Manifesto</a>
+            <a href="#classic">Clássica</a>
+            <a href="#contemporary">Contemporânea</a>
+            <a href="#contact">Contato</a>
+        </div>
+        <button class="nav-toggle">
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section - Modern Reveal -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <!-- Current Slide Display -->
+            <div class="hero-content">
+                <div class="content-number">01</div>
+                <div class="content-main">
+                    <span class="content-tag">EQUIPILATES 2024</span>
+                    <h1 class="content-title">
+                        <span class="title-line">EXCELÊNCIA</span>
+                        <span class="title-line accent">ABSOLUTA</span>
+                    </h1>
+                    <p class="content-description">
+                        Equipamentos premium que redefinem<br/>
+                        o padrão de qualidade no Pilates
+                    </p>
+                    <div class="content-cta">
+                        <a href="#manifesto" class="btn-primary">
+                            <span>Conhecer Produtos</span>
+                            <div class="btn-arrow">→</div>
+                        </a>
+                        <a href="#contact" class="btn-outline">Solicitar Orçamento</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Background Images Carousel -->
+            <div class="hero-backgrounds">
+                <div class="bg-item active" style="background-image: url('images/im1.webp')"></div>
+                <div class="bg-item" style="background-image: url('images/im2.webp')"></div>
+                <div class="bg-item" style="background-image: url('images/im5.webp')"></div>
+                <div class="bg-item" style="background-image: url('images/im6.webp')"></div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button class="hero-arrow hero-arrow-prev" aria-label="Slide anterior">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <button class="hero-arrow hero-arrow-next" aria-label="Próximo slide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+
+            <!-- Minimal Navigation -->
+            <div class="hero-nav">
+                <button class="nav-dot active" data-index="0"></button>
+                <button class="nav-dot" data-index="1"></button>
+                <button class="nav-dot" data-index="2"></button>
+                <button class="nav-dot" data-index="3"></button>
+            </div>
+
+            <!-- Scroll Hint -->
+            <div class="scroll-hint">
+                <span class="scroll-text">Role para explorar</span>
+                <div class="scroll-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manifesto Section - Centered -->
+    <section class="centered-section bg-white" id="manifesto">
+        <div class="centered-container">
+            <span class="section-label" data-scroll-reveal>EQUIPILATES</span>
+            <h2 class="centered-title" data-scroll-reveal>
+                Equipamentos que transformam studios em centros de excelência e bem-estar
+            </h2>
+            <p class="centered-description" data-scroll-reveal>
+                Não fabricamos apenas equipamentos. Criamos experiências que transformam studios e elevam a prática de Pilates. Cada peça é meticulosamente desenvolvida com madeira nobre certificada, aço inox cirúrgico e artesanato excepcional que garante durabilidade por décadas.
+            </p>
+            
+            <div class="image-trio">
+                <div class="trio-item" data-scroll-scale>
+                    <img src="images/equipamento de pilates equipilates melhor do brasil.webp" alt="Reformer Premium">
+                    <h4>Reformer Premium</h4>
+                </div>
+                <div class="trio-item" data-scroll-scale>
+                    <img src="images/equipamento de pilates equipilates melhor do brasil 2.webp" alt="Cadillac Pro">
+                    <h4>Cadillac Pro</h4>
+                </div>
+                <div class="trio-item" data-scroll-scale>
+                    <img src="images/equipamento de pilates equipilates melhor do brasil 3.webp" alt="Wunda Chair">
+                    <h4>Wunda Chair</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-section bg-gray" id="why">
+        <div class="centered-container">
+            <span class="section-label" data-scroll-reveal>NOSSOS DIFERENCIAIS</span>
+            <h2 class="centered-title" data-scroll-reveal>
+                Por que escolher<br/>EquiPilates
+            </h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card" data-scroll-reveal>
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Qualidade Superior</h3>
+                    <p>Materiais premium selecionados e processos de fabricação rigorosos garantem equipamentos que duram décadas.</p>
+                </div>
+                
+                <div class="benefit-card" data-scroll-reveal>
+                    <div class="benefit-icon">✦</div>
+                    <h3>Design Exclusivo</h3>
+                    <p>Estética sofisticada que valoriza seu studio e impressiona seus alunos desde o primeiro contato.</p>
+                </div>
+                
+                <div class="benefit-card" data-scroll-reveal>
+                    <div class="benefit-icon">◆</div>
+                    <h3>Ergonomia Perfeita</h3>
+                    <p>Desenvolvidos com fisioterapeutas para proporcionar a melhor experiência e resultados em cada movimento.</p>
+                </div>
+                
+                <div class="benefit-card" data-scroll-reveal>
+                    <div class="benefit-icon">●</div>
+                    <h3>Suporte Total</h3>
+                    <p>Equipe especializada em todo Brasil para instalação, manutenção e treinamento da sua equipe.</p>
+                </div>
+                
+                <div class="benefit-card" data-scroll-reveal>
+                    <div class="benefit-icon">▲</div>
+                    <h3>Garantia Estendida</h3>
+                    <p>5 anos de garantia que demonstra nossa confiança absoluta na qualidade de cada equipamento.</p>
+                </div>
+                
+                <div class="benefit-card" data-scroll-reveal>
+                    <div class="benefit-icon">■</div>
+                    <h3>Personalização</h3>
+                    <p>Cores, acabamentos e configurações exclusivas para criar a identidade única do seu studio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Linha Clássica - Centered -->
+    <section class="centered-section bg-gray" id="classic">
+        <div class="centered-container">
+            <span class="section-label" data-scroll-reveal>LINHA CLÁSSICA</span>
+            <h2 class="centered-title" data-scroll-reveal>
+                Tradição reinventada<br/>com excelência contemporânea
+            </h2>
+            <p class="centered-description" data-scroll-reveal>
+                A essência do método Joseph Pilates preservada em cada detalhe. Madeira nobre certificada, aço inox cirúrgico e artesanato excepcional se encontram para criar equipamentos atemporais que honram a tradição enquanto abraçam a modernidade.
+            </p>
+            
+            <div class="products-grid">
+                <div class="product-card" data-scroll-reveal>
+                    <div class="product-icon-large">01</div>
+                    <h3>Reformer Premium</h3>
+                    <p>Design atemporal com performance moderna. Madeira nobre e ajustes suaves para uma experiência excepcional.</p>
+                </div>
+                
+                <div class="product-card" data-scroll-reveal>
+                    <div class="product-icon-large">02</div>
+                    <h3>Cadillac Pro</h3>
+                    <p>Versatilidade absoluta com estrutura robusta. Perfeita para todos os níveis de praticantes.</p>
+                </div>
+                
+                <div class="product-card" data-scroll-reveal>
+                    <div class="product-icon-large">03</div>
+                    <h3>Wunda Chair</h3>
+                    <p>Compacta sem comprometer funcionalidade. Ideal para studios com limitação de espaço.</p>
+                </div>
+                
+                <div class="product-card" data-scroll-reveal>
+                    <div class="product-icon-large">04</div>
+                    <h3>Barrel Arc</h3>
+                    <p>Curvatura perfeita para alongamento profundo da coluna vertebral com máximo conforto.</p>
+                </div>
+                
+                <div class="product-card" data-scroll-reveal>
+                    <div class="product-icon-large">05</div>
+                    <h3>Ladder Barrel</h3>
+                    <p>Flexibilidade e força em um único equipamento versátil e elegante.</p>
+                </div>
+                
+                <div class="product-card" data-scroll-reveal>
+                    <div class="product-icon-large">06</div>
+                    <h3>Mat Premium</h3>
+                    <p>Base essencial com materiais superiores e design ergonômico exclusivo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Linha Contemporânea - Centered -->
+    <section class="centered-section bg-gray" id="contemporary">
+        <div class="centered-container">
+            <span class="section-label" data-scroll-reveal>LINHA CONTEMPORÂNEA</span>
+            <h2 class="centered-title" data-scroll-reveal>
+                Inovação que redefine<br/>padrões de qualidade
+            </h2>
+            <p class="centered-description" data-scroll-reveal>
+                Design visionário que desafia convenções. Tecnologia inteligente, materiais aeroespaciais e estética minimalista convergem para criar a próxima geração de equipamentos de Pilates.
+            </p>
+            
+            <div class="tech-features-grid">
+                <div class="tech-feature" data-scroll-reveal>
+                    <div class="tech-number">01</div>
+                    <h3>Sistema Digital Integrado</h3>
+                    <p>Interface touch intuitiva com ajustes precisos e feedback em tempo real para otimizar cada movimento.</p>
+                </div>
+                
+                <div class="tech-feature" data-scroll-reveal>
+                    <div class="tech-number">02</div>
+                    <h3>Materiais Aeroespaciais</h3>
+                    <p>Polímeros de alta performance e liga de alumínio aeronáutico garantem leveza e resistência superior.</p>
+                </div>
+                
+                <div class="tech-feature" data-scroll-reveal>
+                    <div class="tech-number">03</div>
+                    <h3>Design Modular Inteligente</h3>
+                    <p>Personalização infinita com módulos intercambiáveis que se adaptam às necessidades do seu studio.</p>
+                </div>
+                
+                <div class="tech-feature" data-scroll-reveal>
+                    <div class="tech-number">04</div>
+                    <h3>Conectividade Smart</h3>
+                    <p>App dedicado para tracking completo de treinos, manutenção preventiva e análise de performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section - Clean -->
+    <section class="centered-section bg-gray" id="gallery">
+        <div class="centered-container">
+            <span class="section-label" data-scroll-reveal>NOSSOS PROJETOS</span>
+            <h2 class="centered-title" data-scroll-reveal>
+                Studios que confiam<br/>na nossa qualidade
+            </h2>
+            
+            <div class="simple-gallery">
+                <div class="gallery-item" data-scroll-scale>
+                    <img src="images/equipamento de pilates equipilates melhor do brasil.webp" alt="Studio Premium" data-parallax="0.3">
+                    <div class="gallery-caption">
+                        <h4>Studio Premium</h4>
+                        <p>São Paulo, SP</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-scroll-scale>
+                    <img src="images/equipamento de pilates equipilates melhor do brasil 2.webp" alt="Centro Wellness" data-parallax="0.2">
+                    <div class="gallery-caption">
+                        <h4>Centro Wellness</h4>
+                        <p>Rio de Janeiro, RJ</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-scroll-scale>
+                    <img src="images/equipamento de pilates equipilates melhor do brasil 3.webp" alt="Boutique Pilates" data-parallax="0.35">
+                    <div class="gallery-caption">
+                        <h4>Boutique Pilates</h4>
+                        <p>Belo Horizonte, MG</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-scroll-scale>
+                    <img src="images/equipamento de pilates equipilates melhor do brasil 4.webp" alt="Academia Gold" data-parallax="0.25">
+                    <div class="gallery-caption">
+                        <h4>Academia Gold</h4>
+                        <p>Porto Alegre, RS</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-scroll-scale>
+                    <img src="images/equipamento de pilates equipilates melhor do brasil 5.webp" alt="Clínica Move" data-parallax="0.4">
+                    <div class="gallery-caption">
+                        <h4>Clínica Move</h4>
+                        <p>Florianópolis, SC</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-scroll-scale>
+                    <img src="images/equipamento de pilates equipilates melhor do brasil 6.webp" alt="Studio Exclusive" data-parallax="0.3">
+                    <div class="gallery-caption">
+                        <h4>Studio Exclusive</h4>
+                        <p>Curitiba, PR</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section - Clean -->
+    <section class="centered-section bg-white" id="stats">
+        <div class="centered-container">
+            <div class="stats-display">
+                <div class="stat-item" data-scroll-reveal>
+                    <div class="stat-number" data-count="2500">0</div>
+                    <div class="stat-description">Studios equipados em 3 continentes</div>
+                </div>
+                
+                <div class="stat-item" data-scroll-reveal>
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-description">Mil vidas transformadas diariamente</div>
+                </div>
+                
+                <div class="stat-item" data-scroll-reveal>
+                    <div class="stat-number" data-count="98">0</div>
+                    <div class="stat-description">% taxa de recomendação</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials - Clean -->
+    <section class="centered-section bg-white" id="testimonials">
+        <div class="centered-container">
+            <span class="section-label" data-scroll-reveal>DEPOIMENTOS</span>
+            <h2 class="centered-title" data-scroll-reveal>
+                O que nossos clientes<br/>têm a dizer
+            </h2>
+            
+            <div class="testimonials-clean">
+                <div class="testimonial-clean" data-scroll-reveal>
+                    <p class="testimonial-quote">"Os equipamentos da EquiPilates elevaram meu studio a outro nível. Design deslumbrante e qualidade incomparável."</p>
+                    <div class="testimonial-author-clean">
+                        <strong>Mariana Silva</strong>
+                        <span>Studio Equilíbrio, São Paulo</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-clean" data-scroll-reveal>
+                    <p class="testimonial-quote">"Investimento que transformou nosso centro. A durabilidade e precisão são excepcionais. Simplesmente perfeito."</p>
+                    <div class="testimonial-author-clean">
+                        <strong>Carlos Mendes</strong>
+                        <span>Centro Reabilitação, Rio de Janeiro</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-clean" data-scroll-reveal>
+                    <p class="testimonial-quote">"Design sofisticado e funcionalidade impecável. Cada detalhe pensado com maestria. Recomendo sem hesitar."</p>
+                    <div class="testimonial-author-clean">
+                        <strong>Ana Paula Costa</strong>
+                        <span>Studio Harmonia, Belo Horizonte</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Clean -->
+    <section class="centered-section bg-black" id="contact">
+        <div class="centered-container">
+            <span class="section-label" data-scroll-reveal style="color: var(--caramel);">FALE CONOSCO</span>
+            <h2 class="centered-title" data-scroll-reveal style="color: var(--white);">
+                Pronto para transformar<br/>seu studio?
+            </h2>
+            <p class="centered-description" data-scroll-reveal style="color: var(--gray-400);">
+                Entre em contato e descubra como nossos equipamentos podem elevar seu negócio a um novo patamar de excelência.
+            </p>
+            
+            <div class="contact-grid">
+                <div class="contact-info-card" data-scroll-reveal>
+                    <div class="info-icon">📍</div>
+                    <h4>Endereço</h4>
+                    <p>Av. das Indústrias, 1500<br/>São Paulo - SP</p>
+                </div>
+                
+                <div class="contact-info-card" data-scroll-reveal>
+                    <div class="info-icon">📧</div>
+                    <h4>Email</h4>
+                    <p>contato@equipilates.com.br</p>
+                </div>
+                
+                <div class="contact-info-card" data-scroll-reveal>
+                    <div class="info-icon">📱</div>
+                    <h4>Telefone</h4>
+                    <p>(11) 3456-7890<br/>WhatsApp disponível</p>
+                </div>
+            </div>
+            
+            <button class="cta-primary" data-scroll-reveal>Solicitar Orçamento</button>
+        </div>
+    </section>
+
+
+    <!-- Footer - Clean -->
+    <footer class="footer-clean">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="images/logo.png" alt="EquiPilates Logo" class="footer-logo">
+                <p>Excelência em equipamentos de pilates desde 2003</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-group">
+                    <h5>Produtos</h5>
+                    <a href="#classic">Linha Clássica</a>
+                    <a href="#contemporary">Linha Contemporânea</a>
+                </div>
+                
+                <div class="footer-group">
+                    <h5>Empresa</h5>
+                    <a href="#manifesto">Sobre Nós</a>
+                    <a href="#contact">Contato</a>
+                </div>
+                
+                <div class="footer-group">
+                    <h5>Redes Sociais</h5>
+                    <a href="#" target="_blank">Instagram</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom-clean">
+            <p>&copy; 2024 EquiPilates. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
