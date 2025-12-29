@@ -460,13 +460,68 @@ function initHeroSlider() {
 // ==========================================
 function initNavigation() {
     const nav = document.querySelector('.nav');
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const navLinks = document.querySelectorAll('.nav-menu a');
     let lastScroll = 0;
     
+    function closeMenu() {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    function openMenu() {
+        navToggle.classList.add('active');
+        navMenu.classList.add('active');
+        menuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Hamburger menu toggle
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            if (navMenu.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+    }
+    
+    // Close menu when clicking on a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            closeMenu();
+        });
+    });
+    
+    // Close menu when clicking on overlay
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', () => {
+            closeMenu();
+        });
+    }
+    
+    // Close menu on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+    
+    // Hide nav on scroll down, show on scroll up
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
         
         if (currentScroll > lastScroll && currentScroll > 500) {
             nav.classList.add('hidden');
+            // Close menu if open when scrolling
+            if (navMenu.classList.contains('active')) {
+                closeMenu();
+            }
         } else {
             nav.classList.remove('hidden');
         }
