@@ -175,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initScrollProgress();
     initHeroSlider();
+    initUpgradeWizard();
     initStickyScroll();
     initHorizontalScroll();
     initTextReveal();
@@ -204,42 +205,299 @@ function initHeroSlider() {
     const autoPlayInterval = 5000; // 5 seconds per slide
     let autoPlayTimer = null;
     
-    const slides = [
-        {
-            number: '01',
-            tag: 'EQUIPILATES 2024',
-            title: ['EXCELÊNCIA', 'ABSOLUTA'],
-            description: 'Equipamentos premium que redefinem<br/>o padrão de qualidade no Pilates',
-            cta1: { text: 'Conhecer Produtos', link: '#manifesto' },
-            cta2: { text: 'Solicitar Orçamento', link: '#contact' }
+    const WHATSAPP_NUMBER = '5521967329318';
+    function buildWhatsAppLink(text) {
+        const msg = encodeURIComponent(text);
+        return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+    }
+
+    // Language + copy (embedded to work even on file://)
+    const HERO_COPY = {
+        'pt-BR': [
+            {
+                number: '01',
+                tag: 'AUTORIDADE GLOBAL',
+                title: ['EQUIPILATES:', '18 ANOS MOVENDO O PILATES'],
+                description: 'Mais de 30.000 estúdios montados e presença internacional.<br/>A escolha de quem quer ser referência.',
+                cta1: { text: 'Solicitar Orçamento', link: buildWhatsAppLink('Olá, vim pelo site da Equipilates e gostaria de solicitar um orçamento para upgrade/expansão do meu estúdio.') },
+                cta2: { text: 'Conhecer Nossa História', link: '#manifesto' }
+            },
+            {
+                number: '02',
+                tag: 'LINHA CLÁSSICA',
+                title: ['FIDELIDADE TOTAL', 'AO LEGADO DE JOSEPH PILATES'],
+                description: 'Equipamentos desenvolvidos rigorosamente nas medidas originais.<br/>O padrão ouro para o método clássico.',
+                cta1: { text: 'Ver Linha Clássica', link: '#classic' },
+                cta2: { text: 'Falar com Consultor', link: buildWhatsAppLink('Olá, vim pelo site da Equipilates e quero entender a Linha Clássica (medidas originais) para meu estúdio. Pode me orientar?') }
+            },
+            {
+                number: '03',
+                tag: 'NEGÓCIO & ROI',
+                title: ['TRANSFORME SEU SONHO', 'EM UM NEGÓCIO DE SUCESSO'],
+                description: 'Margens de lucro de até 62,7% mostram: Pilates pode ser muito rentável<br/>com os parceiros certos. Comece seu projeto agora.',
+                cta1: { text: 'Monte seu Studio', link: '#wizard' },
+                cta2: { text: 'Ver Condições de Pagamento', link: buildWhatsAppLink('Olá, vim pelo site da Equipilates e gostaria de ver as condições de pagamento (parcelamento) para equipamentos de Pilates.') }
+            },
+            {
+                number: '04',
+                tag: 'INOVAÇÃO & GARANTIA',
+                title: ['EXCELÊNCIA E INOVAÇÃO', 'EM CADA MOVIMENTO'],
+                description: 'Robustez e design avançado com 2 anos de garantia.<br/>Pagamento facilitado em até 36x direto de fábrica.',
+                cta1: { text: 'Ver Linha Contemporânea', link: '#contemporary' },
+                cta2: { text: 'Baixar Catálogo', link: buildWhatsAppLink('Olá! Vim pelo site da Equipilates e gostaria de receber o catálogo (linha clássica e contemporânea).') }
+            }
+        ],
+        'en': [
+            {
+                number: '01',
+                tag: 'GLOBAL AUTHORITY',
+                title: ['EQUIPILATES:', '18 YEARS MOVING PILATES WORLDWIDE'],
+                description: '30,000+ studios built and international presence.<br/>Chosen by those who want to be a reference.',
+                cta1: { text: 'Request a Quote', link: buildWhatsAppLink('Hello, I found Equipilates through the website and would like a quote for a studio upgrade/expansion.') },
+                cta2: { text: 'Our Story', link: '#manifesto' }
+            },
+            {
+                number: '02',
+                tag: 'CLASSIC LINE',
+                title: ['FULL FIDELITY', 'TO JOSEPH PILATES’ LEGACY'],
+                description: 'Built strictly to the original measurements.<br/>The gold standard for classical method.',
+                cta1: { text: 'See Classic Line', link: '#classic' },
+                cta2: { text: 'Talk to a Consultant', link: buildWhatsAppLink('Hello, I want to understand the Classic Line (original measurements) for my studio. Can you help?') }
+            },
+            {
+                number: '03',
+                tag: 'BUSINESS & ROI',
+                title: ['TURN YOUR DREAM', 'INTO A SUCCESSFUL STUDIO'],
+                description: 'Up to 62.7% margins show Pilates can be highly profitable<br/>with the right partners. Start now.',
+                cta1: { text: 'Build My Studio', link: '#wizard' },
+                cta2: { text: 'Payment Options', link: buildWhatsAppLink('Hello, I would like to see payment options/financing for Pilates equipment.') }
+            },
+            {
+                number: '04',
+                tag: 'INNOVATION & WARRANTY',
+                title: ['EXCELLENCE & INNOVATION', 'IN EVERY MOVE'],
+                description: 'Robust design with 2-year warranty.<br/>Up to 36 installments direct from factory.',
+                cta1: { text: 'See Contemporary Line', link: '#contemporary' },
+                cta2: { text: 'Get the Catalog', link: buildWhatsAppLink('Hello! I would like to receive the Equipilates catalog (classic & contemporary).') }
+            }
+        ],
+        'es': [
+            {
+                number: '01',
+                tag: 'AUTORIDAD GLOBAL',
+                title: ['EQUIPILATES:', '18 AÑOS MOVIENDO EL PILATES'],
+                description: 'Más de 30.000 estudios montados y presencia internacional.<br/>La elección de quienes quieren ser referencia.',
+                cta1: { text: 'Solicitar Cotización', link: buildWhatsAppLink('Hola, encontré Equipilates por el sitio y quisiera una cotización para la ampliación/actualización de mi estudio.') },
+                cta2: { text: 'Nuestra Historia', link: '#manifesto' }
+            },
+            {
+                number: '02',
+                tag: 'LÍNEA CLÁSICA',
+                title: ['FIDELIDAD TOTAL', 'AL LEGADO DE JOSEPH PILATES'],
+                description: 'Equipos desarrollados estrictamente con medidas originales.<br/>El estándar de oro para el método clásico.',
+                cta1: { text: 'Ver Línea Clásica', link: '#classic' },
+                cta2: { text: 'Hablar con un Asesor', link: buildWhatsAppLink('Hola, quiero entender la Línea Clásica (medidas originales) para mi estudio. ¿Me orientan?') }
+            },
+            {
+                number: '03',
+                tag: 'NEGOCIO & ROI',
+                title: ['CONVIERTE TU SUEÑO', 'EN UN NEGOCIO EXITOSO'],
+                description: 'Márgenes de hasta 62,7% muestran que Pilates puede ser rentable<br/>con los socios correctos. Empieza ahora.',
+                cta1: { text: 'Armar mi Estudio', link: '#wizard' },
+                cta2: { text: 'Ver Formas de Pago', link: buildWhatsAppLink('Hola, quisiera ver las formas de pago/financiación para equipos de Pilates.') }
+            },
+            {
+                number: '04',
+                tag: 'INNOVACIÓN & GARANTÍA',
+                title: ['EXCELENCIA E INNOVACIÓN', 'EN CADA MOVIMIENTO'],
+                description: 'Robustez y diseño avanzado con 2 años de garantía.<br/>Hasta 36 cuotas directo de fábrica.',
+                cta1: { text: 'Ver Línea Contemporánea', link: '#contemporary' },
+                cta2: { text: 'Descargar Catálogo', link: buildWhatsAppLink('Hola! Quisiera recibir el catálogo de Equipilates (clásico y contemporáneo).') }
+            }
+        ]
+    };
+
+    function getCurrentLang() {
+        return localStorage.getItem('eq_lang') || 'pt-BR';
+    }
+
+    function setCurrentLang(lang) {
+        localStorage.setItem('eq_lang', lang);
+    }
+
+    function getSlidesForLang(lang) {
+        return HERO_COPY[lang] || HERO_COPY['pt-BR'];
+    }
+
+    function applyLangUI(lang) {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        document.documentElement.lang = lang === 'pt-BR' ? 'pt-BR' : lang;
+    }
+
+    function applyI18nStrings(lang) {
+        const dict = I18N[lang] || I18N['pt-BR'];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const value = dict[key];
+            if (typeof value === 'string') el.textContent = value;
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            const value = dict[key];
+            if (typeof value === 'string') el.setAttribute('placeholder', value);
+        });
+    }
+
+    // Minimal site-wide i18n for nav + wizard texts
+    const I18N = {
+        'pt-BR': {
+            'nav.home': 'Início',
+            'nav.manifesto': 'Manifesto',
+            'nav.classic': 'Clássica',
+            'nav.contemporary': 'Contemporânea',
+            'nav.contact': 'Contato',
+            'hero.trustLine': 'Desde 2006 • Fábrica em Resende-RJ • Presença em 15+ países',
+            'manifesto.kicker': 'EQUIPILATES',
+            'manifesto.title': 'Seu estúdio merece equipamentos que sustentam crescimento',
+            'manifesto.body': 'Quem já tem estúdio sabe: o “barato” vira manutenção, aula interrompida e aluno insatisfeito. A Equipilates existe para tirar esse risco do seu caminho — com fábrica própria, padrão de qualidade e um time comercial que ajuda você a decidir o upgrade certo.',
+            'wizard.kicker': 'MONTE SEU UPGRADE',
+            'wizard.title': 'Em 2 minutos, descubra um kit recomendado para o seu espaço',
+            'wizard.subtitle': 'Responda 3 perguntas rápidas e receba uma sugestão inicial. Se fizer sentido, você fala com um consultor com tudo já resumido.',
+            'wizard.q1.label': 'Tamanho do seu espaço',
+            'wizard.q1.placeholder': 'Selecione uma faixa',
+            'wizard.q1.opt1': 'Até 25m²',
+            'wizard.q1.opt2': '25–40m²',
+            'wizard.q1.opt3': '40–70m²',
+            'wizard.q1.opt4': '70m²+',
+            'wizard.q2.label': 'Objetivo do upgrade',
+            'wizard.q2.placeholder': 'Selecione o objetivo',
+            'wizard.q2.opt1': 'Expandir capacidade (mais alunos/horários)',
+            'wizard.q2.opt2': 'Trocar equipamentos e reduzir manutenção',
+            'wizard.q2.opt3': 'Foco em reabilitação/fisioterapia',
+            'wizard.q2.opt4': 'Atualizar para linha contemporânea',
+            'wizard.q3.label': 'Equipamentos atuais (opcional)',
+            'wizard.q3.placeholder': 'Ex: Reformer + Cadillac (ou marca atual)',
+            'wizard.q3.hint': 'Se não souber, tudo bem — escreva “não sei”.',
+            'wizard.primaryCta': 'Ver recomendação e falar no WhatsApp',
+            'wizard.secondaryCta': 'Prefiro receber por e-mail',
+            'wizard.trust': 'Dica: estúdios bem geridos podem alcançar margens de lucro de até 62,7%. Vamos te ajudar a planejar o upgrade certo.',
+            'wizard.lead.name': 'Nome',
+            'wizard.lead.namePh': 'Seu nome',
+            'wizard.lead.email': 'E-mail',
+            'wizard.lead.emailPh': 'voce@exemplo.com',
+            'wizard.lead.send': 'Enviar para o time',
+            'wizard.lead.note': 'Abrirá seu cliente de e-mail com a mensagem pronta.',
+            'contact.kicker': 'FALE CONOSCO',
+            'contact.title': 'Pronto para planejar o próximo passo do seu estúdio?',
+            'contact.body': 'Fale com um consultor e receba orientação para escolher linha, kit e layout ideal para o seu espaço.',
+            'contact.addrTitle': 'Endereço',
+            'contact.emailTitle': 'Email',
+            'contact.phoneTitle': 'WhatsApp',
+            'contact.phoneHint': 'Atendimento comercial',
+            'contact.primaryCta': 'Falar no WhatsApp',
+            'contact.secondaryCta': 'Ou preencha o Wizard acima e envie tudo já organizado.'
         },
-        {
-            number: '02',
-            tag: 'DESIGN & FUNÇÃO',
-            title: ['QUALIDADE', 'SUPERIOR'],
-            description: 'Fabricação artesanal com tecnologia<br/>de ponta para resultados excepcionais',
-            cta1: { text: 'Explorar Linha', link: '#classic' },
-            cta2: { text: 'Ver Galeria', link: '#contemporary' }
+        'en': {
+            'nav.home': 'Home',
+            'nav.manifesto': 'Manifesto',
+            'nav.classic': 'Classic',
+            'nav.contemporary': 'Contemporary',
+            'nav.contact': 'Contact',
+            'hero.trustLine': 'Since 2006 • Factory in Resende-RJ • Present in 15+ countries',
+            'manifesto.kicker': 'EQUIPILATES',
+            'manifesto.title': 'Your studio deserves equipment that supports growth',
+            'manifesto.body': 'If you run a studio, you know: “cheap” becomes maintenance, interrupted sessions and unhappy clients. Equipilates exists to remove that risk — with our own factory, quality standards and a sales team that helps you choose the right upgrade.',
+            'wizard.kicker': 'BUILD YOUR UPGRADE',
+            'wizard.title': 'In 2 minutes, get a recommended kit for your space',
+            'wizard.subtitle': 'Answer 3 quick questions and get an initial suggestion. If it fits, talk to a consultant with everything summarized.',
+            'wizard.q1.label': 'Your space size',
+            'wizard.q1.placeholder': 'Select a range',
+            'wizard.q1.opt1': 'Up to 25m²',
+            'wizard.q1.opt2': '25–40m²',
+            'wizard.q1.opt3': '40–70m²',
+            'wizard.q1.opt4': '70m²+',
+            'wizard.q2.label': 'Upgrade goal',
+            'wizard.q2.placeholder': 'Select a goal',
+            'wizard.q2.opt1': 'Increase capacity (more clients/schedule)',
+            'wizard.q2.opt2': 'Replace equipment and reduce maintenance',
+            'wizard.q2.opt3': 'Rehab/physio focus',
+            'wizard.q2.opt4': 'Move to contemporary line',
+            'wizard.q3.label': 'Current equipment (optional)',
+            'wizard.q3.placeholder': 'Ex: Reformer + Cadillac (or current brand)',
+            'wizard.q3.hint': 'If you don’t know, it’s ok — type “not sure”.',
+            'wizard.primaryCta': 'See recommendation & WhatsApp',
+            'wizard.secondaryCta': 'Send by email',
+            'wizard.trust': 'Tip: well-managed studios can reach up to 62.7% margins. We’ll help you plan the right upgrade.',
+            'wizard.lead.name': 'Name',
+            'wizard.lead.namePh': 'Your name',
+            'wizard.lead.email': 'Email',
+            'wizard.lead.emailPh': 'you@example.com',
+            'wizard.lead.send': 'Send to the team',
+            'wizard.lead.note': 'Opens your email client with the message ready.',
+            'contact.kicker': 'CONTACT',
+            'contact.title': 'Ready to plan your studio’s next step?',
+            'contact.body': 'Talk to a consultant and get guidance on line, kit and layout for your space.',
+            'contact.addrTitle': 'Address',
+            'contact.emailTitle': 'Email',
+            'contact.phoneTitle': 'WhatsApp',
+            'contact.phoneHint': 'Sales team',
+            'contact.primaryCta': 'Chat on WhatsApp',
+            'contact.secondaryCta': 'Or use the Wizard above and send everything organized.'
         },
-        {
-            number: '03',
-            tag: '20 ANOS DE HISTÓRIA',
-            title: ['CONFIANÇA', 'COMPROVADA'],
-            description: '2500+ studios em 3 continentes<br/>escolhem nossa excelência',
-            cta1: { text: 'Nossa História', link: '#innovation' },
-            cta2: { text: 'Fale Conosco', link: '#contact' }
-        },
-        {
-            number: '04',
-            tag: 'INOVAÇÃO CONSTANTE',
-            title: ['TECNOLOGIA', 'AVANÇADA'],
-            description: 'Equipamentos inteligentes para<br/>resultados superiores e mensuráveis',
-            cta1: { text: 'Ver Tecnologia', link: '#contemporary' },
-            cta2: { text: 'Solicitar Demo', link: '#contact' }
+        'es': {
+            'nav.home': 'Inicio',
+            'nav.manifesto': 'Manifiesto',
+            'nav.classic': 'Clásica',
+            'nav.contemporary': 'Contemporánea',
+            'nav.contact': 'Contacto',
+            'hero.trustLine': 'Desde 2006 • Fábrica en Resende-RJ • Presencia en 15+ países',
+            'manifesto.kicker': 'EQUIPILATES',
+            'manifesto.title': 'Tu estudio merece equipos que sostienen el crecimiento',
+            'manifesto.body': 'Si ya tienes estudio, lo sabes: lo “barato” se convierte en mantenimiento, clases interrumpidas y clientes insatisfechos. Equipilates existe para quitar ese riesgo — con fábrica propia, estándar de calidad y un equipo comercial que te ayuda a elegir el upgrade correcto.',
+            'wizard.kicker': 'ARMA TU UPGRADE',
+            'wizard.title': 'En 2 minutos, recibe un kit recomendado para tu espacio',
+            'wizard.subtitle': 'Responde 3 preguntas rápidas y recibe una sugerencia inicial. Si encaja, habla con un asesor con todo resumido.',
+            'wizard.q1.label': 'Tamaño del espacio',
+            'wizard.q1.placeholder': 'Selecciona un rango',
+            'wizard.q1.opt1': 'Hasta 25m²',
+            'wizard.q1.opt2': '25–40m²',
+            'wizard.q1.opt3': '40–70m²',
+            'wizard.q1.opt4': '70m²+',
+            'wizard.q2.label': 'Objetivo del upgrade',
+            'wizard.q2.placeholder': 'Selecciona un objetivo',
+            'wizard.q2.opt1': 'Aumentar capacidad (más clientes/horarios)',
+            'wizard.q2.opt2': 'Reemplazar equipos y reducir mantenimiento',
+            'wizard.q2.opt3': 'Enfoque en rehabilitación/fisio',
+            'wizard.q2.opt4': 'Pasar a línea contemporánea',
+            'wizard.q3.label': 'Equipos actuales (opcional)',
+            'wizard.q3.placeholder': 'Ej: Reformer + Cadillac (o marca actual)',
+            'wizard.q3.hint': 'Si no sabes, está bien — escribe “no sé”.',
+            'wizard.primaryCta': 'Ver recomendación y WhatsApp',
+            'wizard.secondaryCta': 'Enviar por email',
+            'wizard.trust': 'Tip: estudios bien gestionados pueden llegar hasta 62,7% de margen. Te ayudamos a planificar el upgrade correcto.',
+            'wizard.lead.name': 'Nombre',
+            'wizard.lead.namePh': 'Tu nombre',
+            'wizard.lead.email': 'Email',
+            'wizard.lead.emailPh': 'tu@ejemplo.com',
+            'wizard.lead.send': 'Enviar al equipo',
+            'wizard.lead.note': 'Abre tu cliente de correo con el mensaje listo.',
+            'contact.kicker': 'CONTACTO',
+            'contact.title': '¿Listo para planificar el próximo paso de tu estudio?',
+            'contact.body': 'Habla con un asesor y recibe orientación sobre línea, kit y layout para tu espacio.',
+            'contact.addrTitle': 'Dirección',
+            'contact.emailTitle': 'Email',
+            'contact.phoneTitle': 'WhatsApp',
+            'contact.phoneHint': 'Equipo comercial',
+            'contact.primaryCta': 'Hablar por WhatsApp',
+            'contact.secondaryCta': 'O usa el Wizard arriba y envía todo organizado.'
         }
-    ];
+    };
     
-    function updateContent(index) {
+    function updateContent(index, opts = { animate: true }) {
+        const lang = getCurrentLang();
+        const slides = getSlidesForLang(lang);
         const slide = slides[index];
         
         // Update number with modern animation
@@ -258,47 +516,46 @@ function initHeroSlider() {
         const ctaContainer = document.querySelector('.content-cta');
         const ctas = document.querySelectorAll('.content-cta a');
         
-        // Remove motion-in class to reset
-        tag.classList.remove('motion-in');
-        titleLines.forEach(line => line.classList.remove('motion-in'));
-        description.classList.remove('motion-in');
-        ctaContainer.classList.remove('motion-in-reverse');
-        
-        // Trigger reflow to restart animation
-        void tag.offsetWidth;
-        
-        setTimeout(() => {
-            // Update content
+        // Update content immediately (used on first load / language switch)
+        const applyText = () => {
             tag.textContent = slide.tag;
             titleLines[0].textContent = slide.title[0];
             titleLines[1].textContent = slide.title[1];
             description.innerHTML = slide.description;
             ctas[0].innerHTML = `<span>${slide.cta1.text}</span><div class="btn-arrow">→</div>`;
             ctas[0].href = slide.cta1.link;
+            ctas[0].setAttribute('target', slide.cta1.link.startsWith('http') ? '_blank' : '_self');
+            ctas[0].setAttribute('rel', slide.cta1.link.startsWith('http') ? 'noopener' : '');
             ctas[1].textContent = slide.cta2.text;
             ctas[1].href = slide.cta2.link;
-            
+            ctas[1].setAttribute('target', slide.cta2.link.startsWith('http') ? '_blank' : '_self');
+            ctas[1].setAttribute('rel', slide.cta2.link.startsWith('http') ? 'noopener' : '');
+        };
+
+        if (!opts.animate) {
+            applyText();
+            return;
+        }
+
+        // Remove motion-in class to reset
+        tag.classList.remove('motion-in');
+        titleLines.forEach(line => line.classList.remove('motion-in'));
+        description.classList.remove('motion-in');
+        ctaContainer.classList.remove('motion-in-reverse');
+
+        // Trigger reflow to restart animation
+        void tag.offsetWidth;
+
+        setTimeout(() => {
+            applyText();
+
             // Add motion classes with stagger
-            setTimeout(() => {
-                tag.classList.add('motion-in');
-            }, 100);
-            
-            setTimeout(() => {
-                titleLines[0].classList.add('motion-in');
-            }, 200);
-            
-            setTimeout(() => {
-                titleLines[1].classList.add('motion-in');
-            }, 350);
-            
-            setTimeout(() => {
-                description.classList.add('motion-in');
-            }, 500);
-            
-            setTimeout(() => {
-                ctaContainer.classList.add('motion-in-reverse');
-            }, 650);
-        }, 400);
+            setTimeout(() => tag.classList.add('motion-in'), 100);
+            setTimeout(() => titleLines[0].classList.add('motion-in'), 200);
+            setTimeout(() => titleLines[1].classList.add('motion-in'), 350);
+            setTimeout(() => description.classList.add('motion-in'), 500);
+            setTimeout(() => ctaContainer.classList.add('motion-in-reverse'), 650);
+        }, 260);
     }
     
     function goToSlide(index) {
@@ -408,35 +665,37 @@ function initHeroSlider() {
     
     // Initialize first slide content with animations
     function initFirstSlide() {
+        const lang = getCurrentLang();
+        applyLangUI(lang);
+        applyI18nStrings(lang);
+        updateContent(0, { animate: false });
+
         const tag = document.querySelector('.content-tag');
         const titleLines = document.querySelectorAll('.title-line');
         const description = document.querySelector('.content-description');
         const ctaContainer = document.querySelector('.content-cta');
-        
+
         // Add motion classes with stagger for initial load
-        setTimeout(() => {
-            tag.classList.add('motion-in');
-        }, 500);
-        
-        setTimeout(() => {
-            titleLines[0].classList.add('motion-in');
-        }, 650);
-        
-        setTimeout(() => {
-            titleLines[1].classList.add('motion-in');
-        }, 800);
-        
-        setTimeout(() => {
-            description.classList.add('motion-in');
-        }, 950);
-        
-        setTimeout(() => {
-            ctaContainer.classList.add('motion-in-reverse');
-        }, 1100);
+        setTimeout(() => tag.classList.add('motion-in'), 350);
+        setTimeout(() => titleLines[0].classList.add('motion-in'), 520);
+        setTimeout(() => titleLines[1].classList.add('motion-in'), 680);
+        setTimeout(() => description.classList.add('motion-in'), 830);
+        setTimeout(() => ctaContainer.classList.add('motion-in-reverse'), 980);
     }
     
     // Initialize first slide on load
     initFirstSlide();
+
+    // Language switch
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+            setCurrentLang(lang);
+            applyLangUI(lang);
+            applyI18nStrings(lang);
+            updateContent(currentIndex, { animate: false });
+        });
+    });
     
     // Start auto-play on load
     startAutoPlay();
@@ -527,6 +786,114 @@ function initNavigation() {
         }
         
         lastScroll = currentScroll;
+    });
+}
+
+// ==========================================
+// UPGRADE WIZARD (MVP)
+// ==========================================
+function initUpgradeWizard() {
+    const form = document.getElementById('upgradeWizard');
+    if (!form) return;
+
+    const spaceEl = document.getElementById('wiz-space');
+    const goalEl = document.getElementById('wiz-goal');
+    const currentEl = document.getElementById('wiz-current');
+    const resultEl = document.getElementById('wizardResult');
+    const leadEl = document.getElementById('wizardLead');
+    const secondaryBtn = document.getElementById('wizardSecondaryCta');
+    const mailtoBtn = document.getElementById('wizardMailtoCta');
+
+    const WHATSAPP_NUMBER = '5521967329318';
+    const wa = (text) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+
+    const kitBySpace = {
+        'Até 25m²': ['Reformer', 'Chair', 'Acessórios'],
+        '25–40m²': ['Reformer', 'Cadillac (ou Tower)', 'Chair'],
+        '40–70m²': ['2x Reformers', 'Cadillac', 'Chair + acessórios'],
+        '70m²+': ['3–4x Reformers', 'Cadillac', 'Barrels + acessórios']
+    };
+
+    function recommend(space, goal, current) {
+        const base = kitBySpace[space] || ['Reformer', 'Cadillac', 'Chair'];
+        let focus = '';
+        if (/reabilita|fisioterapia/i.test(goal)) focus = 'Foco em reabilitação: priorize Cadillac + acessórios terapêuticos.';
+        if (/reduzir manutenção/i.test(goal)) focus = 'Upgrade para reduzir manutenção: avalie troca de molas, estofamento e revisão de componentes.';
+        if (/contemporânea/i.test(goal)) focus = 'Linha contemporânea: layout moderno, robustez e design avançado para performance e experiência premium.';
+        if (/capacidade/i.test(goal)) focus = 'Expansão: mais estações = mais horários e melhor previsibilidade de agenda.';
+
+        const currentStr = (current || '').trim();
+        const currentNote = currentStr ? `Equipamentos atuais: ${currentStr}` : 'Equipamentos atuais: não informado';
+        return {
+            kitTitle: 'Sugestão inicial de kit (ponto de partida):',
+            kit: base,
+            focus,
+            note: currentNote
+        };
+    }
+
+    function setResultHtml(rec) {
+        resultEl.classList.add('active');
+        resultEl.innerHTML = `
+            <strong>${rec.kitTitle}</strong>
+            <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:10px;">
+                ${rec.kit.map(i => `<span style="display:inline-flex; padding:8px 12px; border-radius:999px; background: rgba(0,0,0,0.06); border:1px solid rgba(0,0,0,0.08); font-weight:700; font-size:13px;">${i}</span>`).join('')}
+            </div>
+            <div style="margin-top:12px; color:#2b2b2b; font-size:14px; line-height:1.7;">${rec.focus || ''}</div>
+            <div style="margin-top:10px; color:#404040; font-size:13px;">${rec.note}</div>
+        `;
+    }
+
+    function buildMessage(space, goal, current, rec) {
+        return [
+            'Olá, vim pelo site da Equipilates e quero ajuda para planejar meu upgrade.',
+            '',
+            `Espaço: ${space}`,
+            `Objetivo: ${goal}`,
+            `Equipamentos atuais: ${(current || 'não informado').trim() || 'não informado'}`,
+            '',
+            `Sugestão inicial (site): ${rec.kit.join(', ')}.`,
+            'Podem me orientar com kit ideal e layout?'
+        ].join('\n');
+    }
+
+    secondaryBtn?.addEventListener('click', () => {
+        leadEl.hidden = !leadEl.hidden ? true : false;
+        if (!leadEl.hidden) {
+            leadEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+
+    mailtoBtn?.addEventListener('click', () => {
+        const space = spaceEl.value;
+        const goal = goalEl.value;
+        const current = currentEl.value;
+        if (!space || !goal) return;
+        const rec = recommend(space, goal, current);
+        const name = (document.getElementById('wiz-name')?.value || '').trim();
+        const email = (document.getElementById('wiz-email')?.value || '').trim();
+        const subject = encodeURIComponent('Equipilates | Upgrade do estúdio - dados do Wizard');
+        const body = encodeURIComponent([
+            name ? `Nome: ${name}` : '',
+            email ? `Email: ${email}` : '',
+            '',
+            buildMessage(space, goal, current, rec)
+        ].filter(Boolean).join('\n'));
+        window.location.href = `mailto:email@equipilates.com.br?subject=${subject}&body=${body}`;
+    });
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const space = spaceEl.value;
+        const goal = goalEl.value;
+        const current = currentEl.value;
+        if (!space || !goal) return;
+
+        const rec = recommend(space, goal, current);
+        setResultHtml(rec);
+
+        const link = wa(buildMessage(space, goal, current, rec));
+        window.open(link, '_blank', 'noopener');
     });
 }
 

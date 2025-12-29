@@ -21,12 +21,17 @@
         <div class="nav-logo">
             <img src="images/logo.png" alt="EquiPilates" class="logo-img">
         </div>
+        <div class="lang-switch" aria-label="Selecionar idioma">
+            <button class="lang-btn active" type="button" data-lang="pt-BR">PT</button>
+            <button class="lang-btn" type="button" data-lang="en">EN</button>
+            <button class="lang-btn" type="button" data-lang="es">ES</button>
+        </div>
         <div class="nav-menu">
-            <a href="#hero">Início</a>
-            <a href="#manifesto">Manifesto</a>
-            <a href="#classic">Clássica</a>
-            <a href="#contemporary">Contemporânea</a>
-            <a href="#contact">Contato</a>
+            <a href="#hero" data-i18n="nav.home">Início</a>
+            <a href="#manifesto" data-i18n="nav.manifesto">Manifesto</a>
+            <a href="#classic" data-i18n="nav.classic">Clássica</a>
+            <a href="#contemporary" data-i18n="nav.contemporary">Contemporânea</a>
+            <a href="#contact" data-i18n="nav.contact">Contato</a>
         </div>
         <button class="nav-toggle" aria-label="Menu">
             <span></span>
@@ -42,21 +47,23 @@
             <div class="hero-content">
                 <div class="content-number">01</div>
                 <div class="content-main">
-                    <span class="content-tag">EQUIPILATES 2024</span>
+                    <span class="content-tag" data-role="hero-tag">UPGRADE DE ESTÚDIO</span>
                     <h1 class="content-title">
-                        <span class="title-line">EXCELÊNCIA</span>
-                        <span class="title-line accent">ABSOLUTA</span>
+                        <span class="title-line" data-role="hero-title-1">EQUIPAMENTOS QUE</span>
+                        <span class="title-line accent" data-role="hero-title-2">ELEVAM SEU ESTÚDIO</span>
                     </h1>
-                    <p class="content-description">
-                        Equipamentos premium que redefinem<br/>
-                        o padrão de qualidade no Pilates
+                    <p class="content-description" data-role="hero-description">
+                        Planeje seu upgrade com segurança: kit ideal, suporte e compra direto da fábrica.
                     </p>
                     <div class="content-cta">
-                        <a href="#manifesto" class="btn-primary">
-                            <span>Conhecer Produtos</span>
+                        <a href="https://wa.me/5521967329318?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Equipilates%20e%20gostaria%20de%20falar%20com%20um%20consultor%20sobre%20upgrade%2Fexpans%C3%A3o%20do%20meu%20est%C3%BAdio." class="btn-primary" data-role="hero-cta-primary" target="_blank" rel="noopener">
+                            <span>Falar com consultor</span>
                             <div class="btn-arrow">→</div>
                         </a>
-                        <a href="#contact" class="btn-outline">Solicitar Orçamento</a>
+                        <a href="#wizard" class="btn-outline" data-role="hero-cta-secondary">Montar meu upgrade</a>
+                    </div>
+                    <div class="hero-trust" data-role="hero-trust">
+                        <span data-i18n="hero.trustLine">Desde 2006 • Fábrica em Resende-RJ • Presença em 15+ países</span>
                     </div>
                 </div>
             </div>
@@ -97,15 +104,88 @@
         </div>
     </section>
 
+    <!-- Wizard Section -->
+    <section class="wizard-section bg-white" id="wizard">
+        <div class="wizard-container">
+            <span class="section-label" data-scroll-reveal data-i18n="wizard.kicker">MONTE SEU UPGRADE</span>
+            <h2 class="wizard-title" data-scroll-reveal data-i18n="wizard.title">Em 2 minutos, descubra um kit recomendado para o seu espaço</h2>
+            <p class="wizard-subtitle" data-scroll-reveal data-i18n="wizard.subtitle">
+                Responda 3 perguntas rápidas e receba uma sugestão inicial. Se fizer sentido, você fala com um consultor com tudo já resumido.
+            </p>
+
+            <div class="wizard-card" data-scroll-reveal>
+                <form class="wizard-form" id="upgradeWizard">
+                    <div class="wizard-grid">
+                        <div class="wizard-field">
+                            <label class="wizard-label" for="wiz-space" data-i18n="wizard.q1.label">Tamanho do seu espaço</label>
+                            <select id="wiz-space" name="space" required>
+                                <option value="" selected disabled data-i18n="wizard.q1.placeholder">Selecione uma faixa</option>
+                                <option value="Até 25m²" data-i18n="wizard.q1.opt1">Até 25m²</option>
+                                <option value="25–40m²" data-i18n="wizard.q1.opt2">25–40m²</option>
+                                <option value="40–70m²" data-i18n="wizard.q1.opt3">40–70m²</option>
+                                <option value="70m²+" data-i18n="wizard.q1.opt4">70m²+</option>
+                            </select>
+                        </div>
+
+                        <div class="wizard-field">
+                            <label class="wizard-label" for="wiz-goal" data-i18n="wizard.q2.label">Objetivo do upgrade</label>
+                            <select id="wiz-goal" name="goal" required>
+                                <option value="" selected disabled data-i18n="wizard.q2.placeholder">Selecione o objetivo</option>
+                                <option value="Expandir capacidade (mais alunos/horários)" data-i18n="wizard.q2.opt1">Expandir capacidade (mais alunos/horários)</option>
+                                <option value="Trocar equipamentos e reduzir manutenção" data-i18n="wizard.q2.opt2">Trocar equipamentos e reduzir manutenção</option>
+                                <option value="Foco em reabilitação/fisioterapia" data-i18n="wizard.q2.opt3">Foco em reabilitação/fisioterapia</option>
+                                <option value="Atualizar para linha contemporânea" data-i18n="wizard.q2.opt4">Atualizar para linha contemporânea</option>
+                            </select>
+                        </div>
+
+                        <div class="wizard-field wizard-field-full">
+                            <label class="wizard-label" for="wiz-current" data-i18n="wizard.q3.label">Equipamentos atuais (opcional)</label>
+                            <input id="wiz-current" name="current" type="text" placeholder="Ex: Reformer + Cadillac (ou marca atual)" data-i18n-placeholder="wizard.q3.placeholder" />
+                            <div class="wizard-hint" data-i18n="wizard.q3.hint">Se não souber, tudo bem — escreva “não sei”.</div>
+                        </div>
+                    </div>
+
+                    <div class="wizard-result" id="wizardResult" aria-live="polite"></div>
+
+                    <div class="wizard-actions">
+                        <button class="wizard-btn wizard-btn-primary" type="submit" data-i18n="wizard.primaryCta">Ver recomendação e falar no WhatsApp</button>
+                        <button class="wizard-btn wizard-btn-secondary" type="button" id="wizardSecondaryCta" data-i18n="wizard.secondaryCta">Prefiro receber por e-mail</button>
+                    </div>
+
+                    <div class="wizard-lead" id="wizardLead" hidden>
+                        <div class="wizard-grid">
+                            <div class="wizard-field">
+                                <label class="wizard-label" for="wiz-name" data-i18n="wizard.lead.name">Nome</label>
+                                <input id="wiz-name" name="name" type="text" placeholder="Seu nome" data-i18n-placeholder="wizard.lead.namePh" />
+                            </div>
+                            <div class="wizard-field">
+                                <label class="wizard-label" for="wiz-email" data-i18n="wizard.lead.email">E-mail</label>
+                                <input id="wiz-email" name="email" type="email" placeholder="voce@exemplo.com" data-i18n-placeholder="wizard.lead.emailPh" />
+                            </div>
+                            <div class="wizard-field wizard-field-full">
+                                <button class="wizard-btn wizard-btn-primary" type="button" id="wizardMailtoCta" data-i18n="wizard.lead.send">Enviar para o time</button>
+                                <div class="wizard-hint" data-i18n="wizard.lead.note">Abrirá seu cliente de e-mail com a mensagem pronta.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wizard-trust" data-i18n="wizard.trust">
+                        Dica: estúdios bem geridos podem alcançar margens de lucro de até 62,7%. Vamos te ajudar a planejar o upgrade certo.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Manifesto Section - Centered -->
     <section class="centered-section bg-white" id="manifesto">
         <div class="centered-container">
-            <span class="section-label" data-scroll-reveal>EQUIPILATES</span>
-            <h2 class="centered-title" data-scroll-reveal>
-                Equipamentos que transformam studios em centros de excelência e bem-estar
+            <span class="section-label" data-scroll-reveal data-i18n="manifesto.kicker">EQUIPILATES</span>
+            <h2 class="centered-title" data-scroll-reveal data-i18n="manifesto.title">
+                Seu estúdio merece equipamentos que sustentam crescimento
             </h2>
-            <p class="centered-description" data-scroll-reveal>
-                Não fabricamos apenas equipamentos. Criamos experiências que transformam studios e elevam a prática de Pilates. Cada peça é meticulosamente desenvolvida com madeira nobre certificada, aço inox cirúrgico e artesanato excepcional que garante durabilidade por décadas.
+            <p class="centered-description" data-scroll-reveal data-i18n="manifesto.body">
+                Quem já tem estúdio sabe: o “barato” vira manutenção, aula interrompida e aluno insatisfeito. A Equipilates existe para tirar esse risco do seu caminho — com fábrica própria, padrão de qualidade e um time comercial que ajuda você a decidir o upgrade certo.
             </p>
             
             <div class="image-trio">
@@ -384,35 +464,38 @@
     <!-- Contact Section - Clean -->
     <section class="centered-section bg-black" id="contact">
         <div class="centered-container">
-            <span class="section-label" data-scroll-reveal style="color: var(--caramel);">FALE CONOSCO</span>
+            <span class="section-label" data-scroll-reveal style="color: var(--caramel);" data-i18n="contact.kicker">FALE CONOSCO</span>
             <h2 class="centered-title" data-scroll-reveal style="color: var(--white);">
-                Pronto para transformar<br/>seu studio?
+                <span data-i18n="contact.title">Pronto para planejar o próximo passo do seu estúdio?</span>
             </h2>
             <p class="centered-description" data-scroll-reveal style="color: var(--gray-400);">
-                Entre em contato e descubra como nossos equipamentos podem elevar seu negócio a um novo patamar de excelência.
+                <span data-i18n="contact.body">Fale com um consultor e receba orientação para escolher linha, kit e layout ideal para o seu espaço.</span>
             </p>
             
             <div class="contact-grid">
                 <div class="contact-info-card" data-scroll-reveal>
                     <div class="info-icon">📍</div>
-                    <h4>Endereço</h4>
-                    <p>Av. das Indústrias, 1500<br/>São Paulo - SP</p>
+                    <h4 data-i18n="contact.addrTitle">Endereço</h4>
+                    <p>Resende - RJ, Bairro Elite<br/>Rua Alice Duarte de Barros, Nº 111<br/>CEP: 27.522-170</p>
                 </div>
                 
                 <div class="contact-info-card" data-scroll-reveal>
                     <div class="info-icon">📧</div>
-                    <h4>Email</h4>
-                    <p>contato@equipilates.com.br</p>
+                    <h4 data-i18n="contact.emailTitle">Email</h4>
+                    <p><a href="mailto:email@equipilates.com.br" style="color: inherit; text-decoration: none;">email@equipilates.com.br</a></p>
                 </div>
                 
                 <div class="contact-info-card" data-scroll-reveal>
                     <div class="info-icon">📱</div>
-                    <h4>Telefone</h4>
-                    <p>(11) 3456-7890<br/>WhatsApp disponível</p>
+                    <h4 data-i18n="contact.phoneTitle">WhatsApp</h4>
+                    <p><a href="https://wa.me/5521967329318?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Equipilates%20e%20gostaria%20de%20falar%20com%20o%20time%20comercial." target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">(21) 96732-9318</a><br/><span data-i18n="contact.phoneHint">Atendimento comercial</span></p>
                 </div>
             </div>
             
-            <button class="cta-primary" data-scroll-reveal>Solicitar Orçamento</button>
+            <a class="cta-primary" data-scroll-reveal href="https://wa.me/5521967329318?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Equipilates%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20equipamentos%20de%20Pilates." target="_blank" rel="noopener" data-i18n="contact.primaryCta">Falar no WhatsApp</a>
+            <div class="contact-mini" data-scroll-reveal>
+                <span data-i18n="contact.secondaryCta">Ou preencha o Wizard acima e envie tudo já organizado.</span>
+            </div>
         </div>
     </section>
 
