@@ -330,7 +330,12 @@ function initHeroSlider() {
     }
 
     function applyLangUI(lang) {
+        // Update desktop lang buttons
         document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        // Update mobile lang bar buttons
+        document.querySelectorAll('.mobile-lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
         document.documentElement.lang = lang === 'pt-BR' ? 'pt-BR' : lang;
@@ -686,7 +691,7 @@ function initHeroSlider() {
     // Initialize first slide on load
     initFirstSlide();
 
-    // Language switch
+    // Language switch (desktop)
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const lang = btn.dataset.lang;
@@ -696,6 +701,43 @@ function initHeroSlider() {
             updateContent(currentIndex, { animate: false });
         });
     });
+
+    // Language switch (mobile app-style bar)
+    document.querySelectorAll('.mobile-lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+            setCurrentLang(lang);
+            applyLangUI(lang);
+            applyI18nStrings(lang);
+            updateContent(currentIndex, { animate: false });
+        });
+    });
+
+    // Hide mobile lang bar on scroll
+    const mobileLangBar = document.querySelector('.mobile-lang-bar');
+    if (mobileLangBar) {
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+        
+        const handleLangBarScroll = () => {
+            const currentScrollY = window.scrollY;
+            // Hide after scrolling 80px
+            if (currentScrollY > 80) {
+                mobileLangBar.classList.add('hidden');
+            } else {
+                mobileLangBar.classList.remove('hidden');
+            }
+            lastScrollY = currentScrollY;
+            ticking = false;
+        };
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(handleLangBarScroll);
+                ticking = true;
+            }
+        }, { passive: true });
+    }
     
     // Start auto-play on load
     startAutoPlay();

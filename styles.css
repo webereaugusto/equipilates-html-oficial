@@ -200,9 +200,91 @@ body > * {
     margin-right: 30px;
 }
 
-/* Mobile language switch (inside menu) - hidden by default */
-.lang-switch-mobile {
-    display: none;
+/* ==========================================
+   MOBILE LANGUAGE BAR (App-style footer)
+   ========================================== */
+.mobile-lang-bar {
+    display: none; /* Hidden on desktop */
+}
+
+@media (max-width: 768px) {
+    .mobile-lang-bar {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9000;
+        display: flex;
+        gap: 8px;
+        padding: 10px 16px;
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 50px;
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.4),
+            0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    .mobile-lang-bar.hidden {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px);
+        pointer-events: none;
+    }
+    
+    .mobile-lang-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .mobile-lang-btn .flag-icon {
+        width: 18px;
+        height: 13px;
+        border-radius: 2px;
+        object-fit: cover;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    .mobile-lang-btn span {
+        opacity: 0.9;
+    }
+    
+    .mobile-lang-btn.active {
+        background: rgba(212, 165, 116, 0.25);
+        border-color: rgba(212, 165, 116, 0.5);
+        color: var(--white);
+        box-shadow: 0 0 15px rgba(212, 165, 116, 0.2);
+    }
+    
+    .mobile-lang-btn.active .flag-icon {
+        box-shadow: 0 2px 8px rgba(212, 165, 116, 0.3);
+    }
+    
+    .mobile-lang-btn:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        transform: translateY(-2px);
+    }
+    
+    .mobile-lang-btn:active {
+        transform: scale(0.96);
+    }
 }
 
 .lang-btn {
@@ -2844,20 +2926,6 @@ a, button, input, textarea, select {
         font-size: 11px;
         padding: 7px 9px;
         letter-spacing: 1px;
-    }
-    
-    /* Show language switch inside mobile menu */
-    .lang-switch-mobile {
-        display: flex;
-        gap: 10px;
-        margin-top: 30px;
-        padding-top: 25px;
-        border-top: 1px solid rgba(212, 165, 116, 0.3);
-    }
-    
-    .lang-switch-mobile .lang-btn {
-        font-size: 12px;
-        padding: 10px 14px;
     }
     
     .logo-img {
