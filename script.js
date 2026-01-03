@@ -551,11 +551,11 @@ function initHeroSlider() {
             },
             {
                 number: '03',
-                tag: 'NEGOCIO E ROI',
-                title: ['TRANSFORME SEU SONHO', 'EM UM NEGOCIO DE SUCESSO'],
-                description: 'Margens de lucro de ate 62,7% mostram: Pilates pode ser muito rentavel<br/>com os parceiros certos.',
-                cta1: { text: 'Monte seu Studio', link: '#wizard' },
-                cta2: { text: 'Ver Condicoes de Pagamento', link: buildWhatsAppLink('Ola, gostaria de ver as condicoes de pagamento para equipamentos.') }
+                tag: 'LÍDER GLOBAL',
+                title: ['A MAIOR FÁBRICA', 'DE PILATES DA AMÉRICA LATINA'],
+                description: 'Desde 2006 exportando para 24+ países. Fábrica própria de 2.500m²<br/>com tecnologia de ponta em Resende-RJ.',
+                cta1: { text: 'Conhecer a Fábrica', link: '#manifesto' },
+                cta2: { text: 'Falar com Especialista', link: buildWhatsAppLink('Olá, gostaria de conhecer mais sobre a Equipilates.') }
             },
             {
                 number: '04',
@@ -585,11 +585,11 @@ function initHeroSlider() {
             },
             {
                 number: '03',
-                tag: 'BUSINESS AND ROI',
-                title: ['TURN YOUR DREAM', 'INTO A SUCCESSFUL STUDIO'],
-                description: 'Up to 62.7% margins show Pilates can be highly profitable<br/>with the right partners.',
-                cta1: { text: 'Build My Studio', link: '#wizard' },
-                cta2: { text: 'Payment Options', link: buildWhatsAppLink('Hello, I would like to see payment options for equipment.') }
+                tag: 'GLOBAL LEADER',
+                title: ['THE LARGEST PILATES', 'FACTORY IN LATIN AMERICA'],
+                description: 'Exporting to 24+ countries since 2006. Own 2,500m² factory<br/>with cutting-edge technology in Brazil.',
+                cta1: { text: 'Discover Our Factory', link: '#manifesto' },
+                cta2: { text: 'Talk to an Expert', link: buildWhatsAppLink('Hello, I would like to learn more about Equipilates.') }
             },
             {
                 number: '04',
@@ -619,11 +619,11 @@ function initHeroSlider() {
             },
             {
                 number: '03',
-                tag: 'NEGOCIO Y ROI',
-                title: ['CONVIERTE TU SUENO', 'EN UN NEGOCIO EXITOSO'],
-                description: 'Margenes de hasta 62,7% muestran que Pilates puede ser rentable<br/>con los socios correctos.',
-                cta1: { text: 'Armar mi Estudio', link: '#wizard' },
-                cta2: { text: 'Ver Formas de Pago', link: buildWhatsAppLink('Hola, quisiera ver las formas de pago para equipos.') }
+                tag: 'LÍDER GLOBAL',
+                title: ['LA MAYOR FÁBRICA', 'DE PILATES DE LATINOAMÉRICA'],
+                description: 'Exportando a 24+ países desde 2006. Fábrica propia de 2.500m²<br/>con tecnología de punta en Brasil.',
+                cta1: { text: 'Conocer la Fábrica', link: '#manifesto' },
+                cta2: { text: 'Hablar con Experto', link: buildWhatsAppLink('Hola, me gustaría conocer más sobre Equipilates.') }
             },
             {
                 number: '04',
@@ -653,11 +653,11 @@ function initHeroSlider() {
             },
             {
                 number: '03',
-                tag: 'GESCHAFT UND ROI',
-                title: ['VERWANDELN SIE IHREN TRAUM', 'IN EIN ERFOLGREICHES GESCHAFT'],
-                description: 'Margen von bis zu 62,7% zeigen, dass Pilates rentabel sein kann<br/>mit den richtigen Partnern.',
-                cta1: { text: 'Mein Studio Planen', link: '#wizard' },
-                cta2: { text: 'Zahlungsbedingungen Sehen', link: buildWhatsAppLink('Hallo, ich mochte die Zahlungsmoglichkeiten sehen.') }
+                tag: 'GLOBALER MARKTFÜHRER',
+                title: ['DIE GRÖSSTE PILATES-', 'FABRIK IN LATEINAMERIKA'],
+                description: 'Seit 2006 in 24+ Länder exportierend. Eigene 2.500m² Fabrik<br/>mit modernster Technologie in Brasilien.',
+                cta1: { text: 'Fabrik Entdecken', link: '#manifesto' },
+                cta2: { text: 'Mit Experten Sprechen', link: buildWhatsAppLink('Hallo, ich möchte mehr über Equipilates erfahren.') }
             },
             {
                 number: '04',
