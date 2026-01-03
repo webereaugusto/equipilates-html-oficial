@@ -4225,6 +4225,9 @@ a, button, input, textarea, select {
 .section-wire {
     padding: 120px 0;
     background: #fff;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
 }
 
 .wire-container {
@@ -4309,6 +4312,25 @@ a, button, input, textarea, select {
     background: rgba(255, 148, 63, 0.2); /* Extra yellow overlay */
     mix-blend-mode: color;
     pointer-events: none;
+}
+
+.btn-wire-card {
+    display: inline-block;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--caramel);
+    text-decoration: none;
+    padding: 12px 0;
+    margin-top: 20px;
+    border-bottom: 2px solid var(--caramel);
+    transition: all 0.3s ease;
+}
+
+.btn-wire-card:hover {
+    color: #1a1a1a;
+    border-color: #1a1a1a;
+    padding-left: 10px;
 }
 
 /* ==========================================
