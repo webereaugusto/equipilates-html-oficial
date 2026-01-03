@@ -4568,13 +4568,30 @@ a, button, input, textarea, select {
     background: #fff;
 }
 
+.core-values-content .section-label {
+    display: inline-block;
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--caramel);
+    margin-bottom: 20px;
+    padding: 8px 20px;
+    border: 1px solid rgba(255, 148, 63, 0.3);
+    background: rgba(255, 148, 63, 0.05);
+}
+
 .core-values-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3.5rem;
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
     font-weight: 700;
     color: #1a1a1a;
-    margin-bottom: 50px;
-    letter-spacing: 2px;
+    margin-bottom: 40px;
+    line-height: 1.2;
+}
+
+.core-values-title .accent {
+    color: var(--caramel);
 }
 
 .core-values-grid {
@@ -4584,30 +4601,21 @@ a, button, input, textarea, select {
 }
 
 .core-value-item h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
     color: #1a1a1a;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
+    margin-bottom: 12px;
 }
 
 .core-value-item p {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Sora', sans-serif;
     font-size: 0.95rem;
     line-height: 1.7;
-    color: #555;
+    color: #666;
 }
 
-/* Accent line on top of title */
-.core-values-title::before {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--accent-gold, #ff943f);
-    margin-bottom: 20px;
-}
+/* Removed accent line - using section-label instead */
 
 @media (max-width: 1024px) {
     .core-values-container {
@@ -4624,7 +4632,7 @@ a, button, input, textarea, select {
     }
     
     .core-values-title {
-        font-size: 2.8rem;
+        font-size: 1.8rem;
     }
 }
 
@@ -4638,21 +4646,26 @@ a, button, input, textarea, select {
     }
     
     .core-values-title {
-        font-size: 2.2rem;
-        margin-bottom: 30px;
+        font-size: 1.5rem;
+        margin-bottom: 25px;
     }
     
     .core-values-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 25px;
     }
     
     .core-value-item h3 {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     .core-value-item p {
         font-size: 0.9rem;
+    }
+    
+    .core-values-content .section-label {
+        font-size: 10px;
+        padding: 6px 14px;
     }
 }
 
