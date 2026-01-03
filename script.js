@@ -1337,21 +1337,36 @@ function initCounters() {
     
     const animateCounter = (counter) => {
         const target = parseInt(counter.getAttribute('data-target'));
+        const suffix = counter.dataset.suffix || '';
+        const separator = counter.dataset.separator || '';
         const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
+        const startTime = performance.now();
         
-        const update = () => {
-            current += step;
-            if (current < target) {
-                counter.textContent = Math.floor(current);
+        const formatNumber = (num) => {
+            if (separator && num >= 1000) {
+                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+            }
+            return num.toString();
+        };
+        
+        const update = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Easing function for smooth animation
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const currentValue = Math.floor(easeOutQuart * target);
+            
+            counter.textContent = formatNumber(currentValue) + suffix;
+            
+            if (progress < 1) {
                 requestAnimationFrame(update);
             } else {
-                counter.textContent = target;
+                counter.textContent = formatNumber(target) + suffix;
             }
         };
         
-        update();
+        requestAnimationFrame(update);
     };
     
     const observer = new IntersectionObserver((entries) => {
