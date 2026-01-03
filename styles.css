@@ -3850,6 +3850,299 @@ a, button, input, textarea, select {
 }
 
 /* ==========================================
+   SEÇÃO LINHA CONTEMPORÂNEA - Carrossel
+   ========================================== */
+.section-linha-contemporanea {
+    background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-linha-contemporanea::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 148, 63, 0.3), transparent);
+}
+
+.linha-contemporanea-header {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 70px;
+}
+
+.linha-contemporanea-title {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 25px;
+    line-height: 1.1;
+}
+
+.linha-contemporanea-title .accent {
+    color: var(--caramel);
+    font-style: italic;
+    display: block;
+    margin-top: 10px;
+}
+
+.linha-contemporanea-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Carrossel Wrapper Contemporânea */
+.contemporanea-carousel-wrapper {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 100px;
+}
+
+.contemporanea-carousel {
+    overflow: hidden;
+    position: relative;
+}
+
+/* Setas nas Laterais */
+.contemporanea-prev,
+.contemporanea-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 60px;
+    height: 60px;
+    background: rgba(26, 26, 26, 0.9);
+    border: 2px solid rgba(255, 148, 63, 0.5);
+    color: var(--caramel);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.contemporanea-prev {
+    left: 0;
+}
+
+.contemporanea-next {
+    right: 0;
+}
+
+.contemporanea-prev:hover,
+.contemporanea-next:hover {
+    background: var(--caramel);
+    border-color: var(--caramel);
+    color: #000;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.contemporanea-carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    gap: 30px;
+}
+
+/* Slides */
+.contemporanea-slide {
+    flex: 0 0 calc(33.333% - 20px);
+    min-width: calc(33.333% - 20px);
+    background: #1a1a1a;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contemporanea-slide:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.contemporanea-slide-img {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+}
+
+.contemporanea-slide-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contemporanea-slide:hover .contemporanea-slide-img img {
+    transform: scale(1.08);
+}
+
+.contemporanea-slide-info {
+    padding: 25px 30px;
+    background: #1a1a1a;
+}
+
+.contemporanea-slide-info h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.contemporanea-slide-info p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Controles do Carrossel - Dots */
+.contemporanea-carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.contemporanea-dots {
+    display: flex;
+    gap: 12px;
+}
+
+.contemporanea-dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contemporanea-dot.active {
+    background: var(--caramel);
+    width: 40px;
+}
+
+/* CTA da Seção Contemporânea */
+.linha-contemporanea-cta {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.btn-linha-contemporanea {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 55px;
+    background: #1a1a1a;
+    border: 2px solid var(--caramel);
+    color: var(--caramel);
+    text-decoration: none;
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-linha-contemporanea::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--caramel);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+}
+
+.btn-linha-contemporanea:hover {
+    color: #000;
+}
+
+.btn-linha-contemporanea:hover::before {
+    transform: scaleX(1);
+}
+
+.btn-linha-contemporanea .btn-arrow {
+    transition: transform 0.3s ease;
+}
+
+.btn-linha-contemporanea:hover .btn-arrow {
+    transform: translateX(8px);
+}
+
+/* Responsivo Contemporânea */
+@media (max-width: 1024px) {
+    .contemporanea-slide {
+        flex: 0 0 calc(50% - 15px);
+        min-width: calc(50% - 15px);
+    }
+    
+    .contemporanea-carousel-wrapper {
+        padding: 0 80px;
+    }
+    
+    .contemporanea-prev,
+    .contemporanea-next {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-linha-contemporanea {
+        padding: 80px 0;
+    }
+    
+    .contemporanea-slide {
+        flex: 0 0 calc(100% - 0px);
+        min-width: calc(100% - 0px);
+    }
+    
+    .contemporanea-carousel-wrapper {
+        padding: 0 60px;
+    }
+    
+    .contemporanea-slide-img {
+        height: 280px;
+    }
+    
+    .contemporanea-prev,
+    .contemporanea-next {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .contemporanea-prev svg,
+    .contemporanea-next svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .btn-linha-contemporanea {
+        padding: 18px 35px;
+        font-size: 14px;
+    }
+}
+
+/* ==========================================
    BANNER CTA (Section after Gallery)
    ========================================== */
 .section-banner-cta {
