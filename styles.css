@@ -10,7 +10,7 @@
 
 :root {
     --black: #000000;
-    --white: #FFFFFF;
+    --white: #FFFFF0;
     --gray-100: #F5F5F5;
     --gray-200: #E5E5E5;
     --gray-300: #D4D4D4;
@@ -3341,7 +3341,7 @@ a, button, input, textarea, select {
    ========================================== */
 .section-gallery {
     padding: 120px 0;
-    background: #fff;
+    background: #FFFFF0;
 }
 
 .gallery-header {
@@ -3755,7 +3755,7 @@ a, button, input, textarea, select {
 }
 
 .warranty-card {
-    background: #ffffff;
+    background: #FFFFF0;
     padding: 45px 35px;
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
@@ -5008,7 +5008,7 @@ a, button, input, textarea, select {
 }
 
 .btn-banner-cta:hover {
-    background: #fff;
+    background: #FFFFF0;
     border-color: #fff;
     color: #1a1a1a;
 }
@@ -5040,7 +5040,7 @@ a, button, input, textarea, select {
    ========================================== */
 .section-wire {
     padding: 120px 0;
-    background: #fff;
+    background: #FFFFF0;
     min-height: 90vh;
     display: flex;
     align-items: center;
@@ -5854,7 +5854,7 @@ a, button, input, textarea, select {
 }
 
 .warranty-card {
-    background: #ffffff;
+    background: #FFFFF0;
     padding: 45px 35px;
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
@@ -6037,7 +6037,7 @@ a, button, input, textarea, select {
 }
 
 .warranty-card {
-    background: #ffffff;
+    background: #FFFFF0;
     padding: 55px 45px;
     border-radius: 35px;
     position: relative;
@@ -6280,7 +6280,7 @@ a, button, input, textarea, select {
 }
 
 .warranty-card {
-    background: #ffffff;
+    background: #FFFFF0;
     padding: 60px 45px;
     border-radius: 25px;
     position: relative;
@@ -6428,7 +6428,7 @@ a, button, input, textarea, select {
    NEW SECTION: Warranty / Garantia - Complete Redesign
    ========================================== */
 .section-warranty {
-    background: #ffffff;
+    background: #FFFFF0;
     min-height: 98vh;
     display: flex;
     align-items: center;
@@ -7302,7 +7302,7 @@ a, button, input, textarea, select {
 
 .testimonial-social-card {
     flex: 0 0 auto; /* Largura será calculada dinamicamente */
-    background: #ffffff;
+    background: #FFFFF0;
     border-radius: 16px;
     padding: 0;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -7949,7 +7949,7 @@ a, button, input, textarea, select {
 
 .faq-item {
     margin-bottom: 20px;
-    background: #fff;
+    background: #FFFFF0;
     border: 1px solid #e5e5e5;
     border-radius: 12px;
     overflow: hidden;
