@@ -351,6 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initClassicaCarousel();
     initContemporaneaCarousel();
     initTestimonialsSocialCarousel();
+    initFAQAccordion();
 });
 
 // ==========================================
@@ -1904,5 +1905,34 @@ function initTestimonialsSocialCarousel() {
     calculateCardWidth();
     createDots();
     startAutoplay();
+}
+
+// ==========================================
+// FAQ ACCORDION
+// ==========================================
+function initFAQAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    if (!faqItems.length) return;
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        if (!question) return;
+        
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Fecha todos os itens
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+            
+            // Se não estava ativo, abre o clicado
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
 }
 

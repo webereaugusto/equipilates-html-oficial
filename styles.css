@@ -7443,6 +7443,40 @@ a, button, input, textarea, select {
         font-size: 14px;
     }
     
+    /* FAQ Mobile */
+    .section-faq {
+        padding: 60px 0;
+    }
+    
+    .faq-accordion {
+        margin-top: 40px;
+    }
+    
+    .faq-question {
+        padding: 20px;
+        font-size: 16px;
+    }
+    
+    .faq-question span:first-child {
+        padding-right: 15px;
+    }
+    
+    .faq-icon {
+        font-size: 24px;
+    }
+    
+    .faq-answer {
+        padding: 0 20px;
+    }
+    
+    .faq-item.active .faq-answer {
+        padding: 0 20px 20px 20px;
+    }
+    
+    .faq-answer p {
+        font-size: 15px;
+    }
+    
     .social-user-name {
         font-size: 15px;
     }
@@ -7902,6 +7936,93 @@ a, button, input, textarea, select {
     color: var(--gray-700);
 }
 
+/* FAQ Section */
+.section-faq {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.faq-accordion {
+    max-width: 900px;
+    margin: 60px auto 0;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(255, 111, 0, 0.1);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 24px 30px;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gray-900);
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    color: var(--accent);
+}
+
+.faq-question span:first-child {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.faq-icon {
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 30px;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 30px 24px 30px;
+}
+
+.faq-answer p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--gray-700);
+    margin: 0;
+}
+
+.faq-answer strong {
+    color: var(--gray-900);
+}
+
 /* Materials Section */
 .section-materials {
     padding: 100px 0;
@@ -8165,6 +8286,7 @@ a, button, input, textarea, select {
 @media (max-width: 768px) {
     .section-split,
     .section-center,
+    .section-faq,
     .section-stats,
     .section-partner,
     .section-market,
