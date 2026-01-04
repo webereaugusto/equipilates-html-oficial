@@ -1763,176 +1763,26 @@ if (window.location.search.includes('debug')) {
 }
 
 // ==========================================
-// CARROSSEL TESTIMONIALS SOCIAL STYLE
+// CARROSSEL TESTIMONIALS INFINITE LOOP
 // ==========================================
 function initTestimonialsSocialCarousel() {
-    const wrapper = document.querySelector('.testimonials-social-wrapper');
+    const wrapper = document.querySelector('.testimonials-infinite-wrapper');
     if (!wrapper) return;
     
-    const track = wrapper.querySelector('.testimonials-social-track');
+    const track = wrapper.querySelector('.testimonials-infinite-track');
     const cards = wrapper.querySelectorAll('.testimonial-social-card');
-    const prevBtn = wrapper.querySelector('.testimonials-social-prev');
-    const nextBtn = wrapper.querySelector('.testimonials-social-next');
-    const dotsContainer = wrapper.querySelector('.testimonials-social-dots');
     
     if (!track || cards.length === 0) return;
     
-    let currentIndex = 0;
-    let cardsPerView = 3;
-    let cardWidth = 0;
-    let maxIndex = 0;
-    let autoplayInterval;
-    const autoplayDelay = 5000;
-    
-    // Calcular cards por visualização baseado na tela
-    function calculateCardsPerView() {
-        if (window.innerWidth <= 768) {
-            cardsPerView = 1;
-        } else if (window.innerWidth <= 992) {
-            cardsPerView = 2;
-        } else {
-            cardsPerView = 3;
-        }
-        maxIndex = Math.max(0, cards.length - cardsPerView);
-    }
-    
-    // Calcular largura do card
-    function calculateCardWidth() {
-        const gap = 30;
-        const wrapperPadding = 200; // 100px de cada lado (considerando as setas)
-        const containerWidth = wrapper.offsetWidth - wrapperPadding;
-        
-        if (cardsPerView === 1) {
-            cardWidth = containerWidth;
-        } else {
-            cardWidth = (containerWidth - (gap * (cardsPerView - 1))) / cardsPerView;
-        }
-        
-        // Aplicar largura aos cards
-        cards.forEach(card => {
-            card.style.width = `${cardWidth}px`;
-        });
-    }
-    
-    // Criar dots
-    function createDots() {
-        dotsContainer.innerHTML = '';
-        const totalDots = maxIndex + 1;
-        for (let i = 0; i < totalDots; i++) {
-            const dot = document.createElement('button');
-            dot.setAttribute('aria-label', `Ir para grupo de depoimentos ${i + 1}`);
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        }
-    }
-    
-    // Atualizar dots
-    function updateDots() {
-        const dots = dotsContainer.querySelectorAll('button');
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-        });
-    }
-    
-    // Ir para slide específico
-    function goToSlide(index) {
-        currentIndex = Math.max(0, Math.min(index, maxIndex));
-        const gap = 30;
-        const offset = currentIndex * (cardWidth + gap);
-        track.style.transform = `translateX(-${offset}px)`;
-        updateDots();
-    }
-    
-    // Slide anterior
-    function prevSlide() {
-        if (currentIndex > 0) {
-            goToSlide(currentIndex - 1);
-        } else {
-            goToSlide(maxIndex); // Loop para o fim
-        }
-    }
-    
-    // Próximo slide
-    function nextSlide() {
-        if (currentIndex < maxIndex) {
-            goToSlide(currentIndex + 1);
-        } else {
-            goToSlide(0); // Loop para o início
-        }
-    }
-    
-    // Autoplay
-    function startAutoplay() {
-        autoplayInterval = setInterval(() => {
-            nextSlide();
-        }, autoplayDelay);
-    }
-    
-    // Resetar autoplay
-    function resetAutoplay() {
-        clearInterval(autoplayInterval);
-        startAutoplay();
-    }
-    
-    // Event listeners
-    if (prevBtn) prevBtn.addEventListener('click', () => {
-        prevSlide();
-        resetAutoplay();
+    // Duplicar os cards para criar o efeito de loop infinito
+    // Duplicamos 2 vezes para garantir que sempre haja cards suficientes
+    const cardsArray = Array.from(cards);
+    cardsArray.forEach(card => {
+        const clone = card.cloneNode(true);
+        track.appendChild(clone);
     });
     
-    if (nextBtn) nextBtn.addEventListener('click', () => {
-        nextSlide();
-        resetAutoplay();
-    });
-    
-    // Pausar autoplay ao passar o mouse
-    wrapper.addEventListener('mouseenter', () => {
-        clearInterval(autoplayInterval);
-    });
-    
-    // Retomar autoplay ao sair o mouse
-    wrapper.addEventListener('mouseleave', () => {
-        startAutoplay();
-    });
-    
-    // Suporte para swipe em dispositivos touch
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    track.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-        clearInterval(autoplayInterval);
-    }, { passive: true });
-    
-    track.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        const swipeThreshold = 50;
-        if (touchStartX - touchEndX > swipeThreshold) {
-            nextSlide();
-        } else if (touchEndX - touchStartX > swipeThreshold) {
-            prevSlide();
-        }
-        startAutoplay();
-    }, { passive: true });
-    
-    // Resize handler
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            calculateCardsPerView();
-            calculateCardWidth();
-            createDots();
-            goToSlide(Math.min(currentIndex, maxIndex));
-        }, 250);
-    });
-    
-    // Inicializar
-    calculateCardsPerView();
-    calculateCardWidth();
-    createDots();
-    updateDots();
-    startAutoplay();
+    // A animação CSS cuida do resto!
+    // O hover pausa a animação automaticamente via CSS
 }
 
