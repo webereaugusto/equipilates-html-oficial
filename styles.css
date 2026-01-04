@@ -7978,7 +7978,7 @@ a, button, input, textarea, select {
 }
 
 .faq-question:hover {
-    color: var(--accent);
+    background: #fafafa;
 }
 
 .faq-question span:first-child {
