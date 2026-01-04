@@ -218,6 +218,7 @@ function initClassicaCarousel() {
         for (let i = 0; i < totalDots; i++) {
             const dot = document.createElement('button');
             dot.classList.add('classica-dot');
+            dot.setAttribute('aria-label', `Ir para slide ${i + 1}`);
             if (i === 0) dot.classList.add('active');
             dot.addEventListener('click', () => goToSlide(i));
             dotsContainer.appendChild(dot);
@@ -398,6 +399,7 @@ function initContemporaneaCarousel() {
         for (let i = 0; i < totalDots; i++) {
             const dot = document.createElement('button');
             dot.classList.add('contemporanea-dot');
+            dot.setAttribute('aria-label', `Ir para slide ${i + 1}`);
             if (i === 0) dot.classList.add('active');
             dot.addEventListener('click', () => goToSlide(i));
             dotsContainer.appendChild(dot);
