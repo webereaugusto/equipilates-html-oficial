@@ -1058,9 +1058,78 @@ function initNavigation() {
 function initGalleryFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
+    const loadMoreBtn = document.getElementById('btnLoadMore');
     
-    if (filterBtns.length === 0 || galleryItems.length === 0) return;
+    if (galleryItems.length === 0) return;
     
+    // Configurações de carregamento progressivo
+    const INITIAL_ITEMS = 12; // 3 linhas de 4
+    const ITEMS_PER_LOAD = 8; // 2 linhas de 4
+    let visibleCount = INITIAL_ITEMS;
+    let currentFilter = 'all';
+    
+    // Função para obter itens filtrados
+    function getFilteredItems() {
+        return Array.from(galleryItems).filter(item => {
+            if (currentFilter === 'all') return true;
+            return item.classList.contains(currentFilter);
+        });
+    }
+    
+    // Função para atualizar visibilidade dos itens
+    function updateGalleryVisibility() {
+        const filteredItems = getFilteredItems();
+        
+        galleryItems.forEach(item => {
+            item.classList.add('gallery-hidden');
+            item.classList.remove('gallery-reveal');
+        });
+        
+        filteredItems.forEach((item, index) => {
+            if (index < visibleCount) {
+                item.classList.remove('gallery-hidden');
+            }
+        });
+        
+        // Mostrar/esconder botão "Carregar mais"
+        if (loadMoreBtn) {
+            if (visibleCount >= filteredItems.length) {
+                loadMoreBtn.classList.add('hidden');
+            } else {
+                loadMoreBtn.classList.remove('hidden');
+            }
+        }
+    }
+    
+    // Função para carregar mais itens
+    function loadMoreItems() {
+        const filteredItems = getFilteredItems();
+        const previousCount = visibleCount;
+        visibleCount = Math.min(visibleCount + ITEMS_PER_LOAD, filteredItems.length);
+        
+        // Revelar novos itens com animação
+        filteredItems.forEach((item, index) => {
+            if (index >= previousCount && index < visibleCount) {
+                item.classList.remove('gallery-hidden');
+                item.classList.add('gallery-reveal');
+            }
+        });
+        
+        // Atualizar botão
+        if (loadMoreBtn && visibleCount >= filteredItems.length) {
+            loadMoreBtn.classList.add('hidden');
+        }
+    }
+    
+    // Inicializar visibilidade
+    updateGalleryVisibility();
+    
+    // Event listener para botão "Carregar mais"
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', loadMoreItems);
+    }
+    
+    // Event listeners para filtros
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             // Remove active from all buttons
@@ -1068,18 +1137,12 @@ function initGalleryFilters() {
             // Add active to clicked button
             btn.classList.add('active');
             
-            const filter = btn.dataset.filter;
+            // Atualizar filtro atual e resetar contador
+            currentFilter = btn.dataset.filter;
+            visibleCount = INITIAL_ITEMS;
             
-            // Filter gallery items
-            galleryItems.forEach(item => {
-                if (filter === 'all' || item.classList.contains(filter)) {
-                    item.classList.remove('hidden');
-                    item.style.display = 'block';
-                } else {
-                    item.classList.add('hidden');
-                    item.style.display = 'none';
-                }
-            });
+            // Atualizar galeria
+            updateGalleryVisibility();
         });
     });
 }

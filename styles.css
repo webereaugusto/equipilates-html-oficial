@@ -3499,6 +3499,71 @@ a, button, input, textarea, select {
     }
 }
 
+/* Gallery Load More Button */
+.gallery-load-more-wrapper {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.btn-load-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 45px;
+    background: transparent;
+    border: 2px solid #333;
+    color: #333;
+    text-decoration: none;
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-load-more:hover {
+    background: #333;
+    color: #fff;
+}
+
+.btn-load-more .load-more-icon {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.btn-load-more:hover .load-more-icon {
+    transform: translateY(3px);
+}
+
+.btn-load-more.hidden {
+    display: none;
+}
+
+/* Gallery Item Visibility */
+.gallery-item {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.gallery-item.gallery-hidden {
+    display: none;
+}
+
+.gallery-item.gallery-reveal {
+    animation: galleryReveal 0.5s ease forwards;
+}
+
+@keyframes galleryReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Gallery CTA Button */
 .gallery-cta-wrapper {
     text-align: center;
