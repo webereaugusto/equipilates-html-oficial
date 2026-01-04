@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGalleryFilters();
     initClassicaCarousel();
     initContemporaneaCarousel();
-    initTestimonialsCarousel();
+    initTestimonialsSocialCarousel();
 });
 
 // ==========================================
@@ -1763,42 +1763,61 @@ if (window.location.search.includes('debug')) {
 }
 
 // ==========================================
-// CARROSSEL DE DEPOIMENTOS
+// CARROSSEL TESTIMONIALS SOCIAL STYLE
 // ==========================================
-function initTestimonialsCarousel() {
-    const wrapper = document.querySelector('.testimonials-carousel-wrapper');
+function initTestimonialsSocialCarousel() {
+    const wrapper = document.querySelector('.testimonials-social-wrapper');
     if (!wrapper) return;
     
-    const carousel = wrapper.querySelector('.testimonials-carousel');
-    const slides = wrapper.querySelectorAll('.testimonial-slide');
-    const prevBtn = wrapper.querySelector('.testimonials-prev');
-    const nextBtn = wrapper.querySelector('.testimonials-next');
-    const dotsContainer = wrapper.querySelector('.testimonials-dots');
+    const track = wrapper.querySelector('.testimonials-social-track');
+    const cards = wrapper.querySelectorAll('.testimonial-social-card');
+    const prevBtn = wrapper.querySelector('.testimonials-social-prev');
+    const nextBtn = wrapper.querySelector('.testimonials-social-next');
+    const dotsContainer = wrapper.querySelector('.testimonials-social-dots');
     
-    if (!carousel || slides.length === 0) return;
+    if (!track || cards.length === 0) return;
     
     let currentIndex = 0;
+    let cardsPerView = 3;
+    let cardWidth = 0;
+    let maxIndex = 0;
     let autoplayInterval;
-    const autoplayDelay = 5000; // 5 segundos entre slides
+    const autoplayDelay = 5000;
     
-    // Criar dots de navegação
-    function createDots() {
-        dotsContainer.innerHTML = '';
-        slides.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.setAttribute('aria-label', `Ir para depoimento ${index + 1}`);
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(index));
-            dotsContainer.appendChild(dot);
-        });
+    // Calcular cards por visualização baseado na tela
+    function calculateCardsPerView() {
+        if (window.innerWidth <= 768) {
+            cardsPerView = 1;
+        } else if (window.innerWidth <= 992) {
+            cardsPerView = 2;
+        } else {
+            cardsPerView = 3;
+        }
+        maxIndex = Math.max(0, cards.length - cardsPerView);
     }
     
-    // Atualizar posição do carrossel
-    function updateCarousel() {
-        const offset = -currentIndex * 100;
-        carousel.style.transform = `translateX(${offset}%)`;
-        
-        // Atualizar dots
+    // Calcular largura do card
+    function calculateCardWidth() {
+        const gap = 30;
+        const containerWidth = wrapper.offsetWidth - 160; // 80px padding de cada lado
+        cardWidth = (containerWidth - (gap * (cardsPerView - 1))) / cardsPerView;
+    }
+    
+    // Criar dots
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        const totalDots = maxIndex + 1;
+        for (let i = 0; i < totalDots; i++) {
+            const dot = document.createElement('button');
+            dot.setAttribute('aria-label', `Ir para grupo de depoimentos ${i + 1}`);
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+    
+    // Atualizar dots
+    function updateDots() {
         const dots = dotsContainer.querySelectorAll('button');
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
@@ -1807,23 +1826,29 @@ function initTestimonialsCarousel() {
     
     // Ir para slide específico
     function goToSlide(index) {
-        currentIndex = index;
-        updateCarousel();
-        resetAutoplay();
+        currentIndex = Math.max(0, Math.min(index, maxIndex));
+        const gap = 30;
+        const offset = currentIndex * (cardWidth + gap);
+        track.style.transform = `translateX(-${offset}px)`;
+        updateDots();
     }
     
     // Slide anterior
     function prevSlide() {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateCarousel();
-        resetAutoplay();
+        if (currentIndex > 0) {
+            goToSlide(currentIndex - 1);
+        } else {
+            goToSlide(maxIndex); // Loop para o fim
+        }
     }
     
     // Próximo slide
     function nextSlide() {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel();
-        resetAutoplay();
+        if (currentIndex < maxIndex) {
+            goToSlide(currentIndex + 1);
+        } else {
+            goToSlide(0); // Loop para o início
+        }
     }
     
     // Autoplay
@@ -1840,8 +1865,15 @@ function initTestimonialsCarousel() {
     }
     
     // Event listeners
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoplay();
+    });
+    
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoplay();
+    });
     
     // Pausar autoplay ao passar o mouse
     wrapper.addEventListener('mouseenter', () => {
@@ -1853,37 +1885,43 @@ function initTestimonialsCarousel() {
         startAutoplay();
     });
     
-    // Suporte para navegação por teclado
-    wrapper.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') prevSlide();
-        if (e.key === 'ArrowRight') nextSlide();
-    });
-    
     // Suporte para swipe em dispositivos touch
     let touchStartX = 0;
     let touchEndX = 0;
     
-    carousel.addEventListener('touchstart', (e) => {
+    track.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
-    });
+        clearInterval(autoplayInterval);
+    }, { passive: true });
     
-    carousel.addEventListener('touchend', (e) => {
+    track.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-    
-    function handleSwipe() {
         const swipeThreshold = 50;
         if (touchStartX - touchEndX > swipeThreshold) {
             nextSlide();
         } else if (touchEndX - touchStartX > swipeThreshold) {
             prevSlide();
         }
-    }
+        startAutoplay();
+    }, { passive: true });
+    
+    // Resize handler
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            calculateCardsPerView();
+            calculateCardWidth();
+            createDots();
+            goToSlide(Math.min(currentIndex, maxIndex));
+        }, 250);
+    });
     
     // Inicializar
+    calculateCardsPerView();
+    calculateCardWidth();
     createDots();
-    updateCarousel();
+    updateDots();
     startAutoplay();
 }
 
