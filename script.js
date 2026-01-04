@@ -1863,9 +1863,7 @@ function initTestimonialsSocialCarousel() {
         clearInterval(autoplayInterval);
     }
     
-    // Pausar autoplay no hover
-    wrapper.addEventListener('mouseenter', stopAutoplay);
-    wrapper.addEventListener('mouseleave', startAutoplay);
+    // Não pausar no hover - autoplay contínuo
     
     // Touch/Swipe para mobile
     let touchStartX = 0;

@@ -7268,6 +7268,16 @@ a, button, input, textarea, select {
     color: var(--caramel);
 }
 
+.testimonials-social-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #555;
+    margin: 20px auto 0;
+    max-width: 800px;
+    font-weight: 500;
+}
+
 /* Wrapper do Carrossel */
 .testimonials-social-wrapper {
     position: relative;
