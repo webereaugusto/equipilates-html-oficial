@@ -3800,6 +3800,205 @@ a, button, input, textarea, select {
     margin: 0;
 }
 
+/* ==========================================
+   SECTION: Warranty Cards - Garantia e Condições
+   ========================================== */
+.section-warranty-cards {
+    background: #FAFAFA;
+    padding: 100px 0;
+    position: relative;
+}
+
+.warranty-cards-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.warranty-cards-header .section-label {
+    display: inline-block;
+    color: var(--caramel);
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.warranty-cards-title {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.warranty-cards-title .accent {
+    color: var(--caramel);
+}
+
+.warranty-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.warranty-card-item {
+    background: linear-gradient(145deg, #ffffff 0%, #f9f9f9 100%);
+    border-radius: 30px;
+    padding: 50px 40px;
+    text-align: center;
+    position: relative;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.08),
+        0 2px 10px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 2px solid rgba(255, 148, 63, 0.1);
+}
+
+.warranty-card-item:hover {
+    transform: translateY(-15px);
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.15),
+        0 8px 25px rgba(255, 148, 63, 0.2);
+    border-color: var(--caramel);
+}
+
+.warranty-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff943f 0%, #ff7b1f 100%);
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    box-shadow: 0 8px 25px rgba(255, 148, 63, 0.4);
+}
+
+.warranty-icon svg {
+    color: #ffffff;
+}
+
+.warranty-badge-number {
+    font-family: 'Sora', sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.warranty-badge-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 20px;
+    text-transform: lowercase;
+}
+
+.warranty-card-item-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* Responsivo Warranty Cards */
+@media (max-width: 1024px) {
+    .warranty-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 30px;
+    }
+    
+    .section-warranty-cards {
+        padding: 80px 0;
+    }
+    
+    .warranty-cards-header {
+        margin-bottom: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-warranty-cards {
+        padding: 60px 0;
+    }
+    
+    .warranty-cards-header {
+        margin-bottom: 50px;
+        padding: 0 20px;
+    }
+    
+    .warranty-cards-grid {
+        padding: 0 20px;
+        gap: 35px;
+    }
+    
+    .warranty-card-item {
+        padding: 40px 30px;
+    }
+    
+    .warranty-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 25px;
+    }
+    
+    .warranty-icon svg {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .warranty-badge-number {
+        font-size: 64px;
+    }
+    
+    .warranty-badge-text {
+        font-size: 15px;
+    }
+    
+    .warranty-card-item-title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .warranty-card-item {
+        padding: 35px 25px;
+    }
+    
+    .warranty-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .warranty-icon svg {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .warranty-badge-number {
+        font-size: 56px;
+    }
+    
+    .warranty-badge-text {
+        font-size: 14px;
+    }
+    
+    .warranty-card-item-title {
+        font-size: 18px;
+    }
+}
+
 /* Carrossel Container */
 .classica-carousel-wrapper {
     position: relative;
@@ -6623,6 +6822,37 @@ a, button, input, textarea, select {
     transform: scale(1.2);
 }
 
+/* CTA dentro da seção Stats */
+.stats-cta-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    padding: 0 20px;
+}
+
+.btn-stats-cta {
+    display: inline-block;
+    font-family: 'Sora', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ff943f 0%, #ff7b1f 100%);
+    padding: 22px 50px;
+    border-radius: 50px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 148, 63, 0.4);
+    border: 2px solid transparent;
+}
+
+.btn-stats-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 148, 63, 0.6);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, #ff7b1f 0%, #ff943f 100%);
+}
+
 /* Partner Section */
 .section-partner {
     padding: 100px 0;
@@ -7191,6 +7421,15 @@ a, button, input, textarea, select {
         gap: 20px;
     }
     
+    .stats-cta-wrapper {
+        margin-top: 50px;
+    }
+    
+    .btn-stats-cta {
+        font-size: 18px;
+        padding: 20px 40px;
+    }
+    
     .stat-number-large {
         font-size: 42px;
     }
@@ -7216,6 +7455,11 @@ a, button, input, textarea, select {
     
     .countries-list span {
         font-size: 40px;
+    }
+    
+    .btn-stats-cta {
+        font-size: 17px;
+        padding: 18px 35px;
     }
 }
 
@@ -7267,6 +7511,17 @@ a, button, input, textarea, select {
     
     .stat-card {
         padding: 30px 20px;
+    }
+    
+    .stats-cta-wrapper {
+        margin-top: 40px;
+    }
+    
+    .btn-stats-cta {
+        font-size: 16px;
+        padding: 16px 30px;
+        width: 100%;
+        max-width: 100%;
     }
     
     .market-card {
