@@ -1799,8 +1799,19 @@ function initTestimonialsSocialCarousel() {
     // Calcular largura do card
     function calculateCardWidth() {
         const gap = 30;
-        const containerWidth = wrapper.offsetWidth - 160; // 80px padding de cada lado
-        cardWidth = (containerWidth - (gap * (cardsPerView - 1))) / cardsPerView;
+        const wrapperPadding = 200; // 100px de cada lado (considerando as setas)
+        const containerWidth = wrapper.offsetWidth - wrapperPadding;
+        
+        if (cardsPerView === 1) {
+            cardWidth = containerWidth;
+        } else {
+            cardWidth = (containerWidth - (gap * (cardsPerView - 1))) / cardsPerView;
+        }
+        
+        // Aplicar largura aos cards
+        cards.forEach(card => {
+            card.style.width = `${cardWidth}px`;
+        });
     }
     
     // Criar dots

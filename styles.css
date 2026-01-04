@@ -7240,7 +7240,7 @@ a, button, input, textarea, select {
    ========================================== */
 .section-testimonials-social {
     background: #fffffa;
-    padding: 100px 0;
+    padding: 100px 0 120px 0; /* Extra padding no bottom para os dots */
     position: relative;
 }
 
@@ -7270,20 +7270,21 @@ a, button, input, textarea, select {
 
 .testimonials-social-wrapper {
     position: relative;
-    max-width: 1400px;
+    max-width: 1600px; /* Aumentado para dar mais espaço */
     margin: 0 auto;
-    padding: 0 80px;
-    overflow: hidden;
+    padding: 0 100px; /* Aumentado para dar espaço às setas */
+    overflow: visible; /* Alterado de hidden para visible */
 }
 
 .testimonials-social-track {
     display: flex;
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     gap: 30px;
+    overflow: visible; /* Garantir que nada seja cortado */
 }
 
 .testimonial-social-card {
-    flex: 0 0 calc(33.333% - 20px);
+    flex: 0 0 auto; /* Alterado para auto */
     background: #ffffff;
     border-radius: 16px;
     padding: 0;
@@ -7405,19 +7406,22 @@ a, button, input, textarea, select {
 }
 
 .testimonials-social-prev {
-    left: 0;
+    left: 20px; /* Afastado da borda */
 }
 
 .testimonials-social-next {
-    right: 0;
+    right: 20px; /* Afastado da borda */
 }
 
 /* Dots de Navegação */
 .testimonials-social-dots {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 12px;
     margin-top: 50px;
+    padding: 20px 0; /* Padding para garantir que não sejam cortados */
+    min-height: 52px; /* Altura mínima para evitar cortes */
 }
 
 .testimonials-social-dots button {
@@ -7429,6 +7433,7 @@ a, button, input, textarea, select {
     cursor: pointer;
     transition: all 0.3s ease;
     padding: 0;
+    flex-shrink: 0; /* Não permitir encolhimento */
 }
 
 .testimonials-social-dots button.active {
@@ -7450,25 +7455,17 @@ a, button, input, textarea, select {
 
 @media (max-width: 992px) {
     .testimonials-social-wrapper {
-        padding: 0 70px;
-    }
-    
-    .testimonial-social-card {
-        flex: 0 0 calc(50% - 15px);
+        padding: 0 90px; /* Mais espaço para as setas */
     }
     
     .section-testimonials-social {
-        padding: 80px 0;
+        padding: 80px 0 100px 0;
     }
 }
 
 @media (max-width: 768px) {
     .testimonials-social-wrapper {
-        padding: 0 60px;
-    }
-    
-    .testimonial-social-card {
-        flex: 0 0 100%;
+        padding: 0 70px; /* Espaço adequado para as setas */
     }
     
     .testimonials-social-header {
@@ -7493,15 +7490,23 @@ a, button, input, textarea, select {
         height: 45px;
         font-size: 28px;
     }
+    
+    .testimonials-social-prev {
+        left: 10px;
+    }
+    
+    .testimonials-social-next {
+        right: 10px;
+    }
 }
 
 @media (max-width: 480px) {
     .testimonials-social-wrapper {
-        padding: 0 50px;
+        padding: 0 60px; /* Espaço adequado mesmo em mobile */
     }
     
     .section-testimonials-social {
-        padding: 60px 0;
+        padding: 60px 0 90px 0; /* Extra padding bottom */
     }
     
     .social-card-header,
@@ -7522,9 +7527,18 @@ a, button, input, textarea, select {
         font-size: 24px;
     }
     
+    .testimonials-social-prev {
+        left: 5px;
+    }
+    
+    .testimonials-social-next {
+        right: 5px;
+    }
+    
     .testimonials-social-dots {
         margin-top: 35px;
         gap: 10px;
+        padding: 15px 0;
     }
     
     .testimonials-social-dots button {
