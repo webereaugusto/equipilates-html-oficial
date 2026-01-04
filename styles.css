@@ -3812,6 +3812,23 @@ a, button, input, textarea, select {
 .warranty-cards-header {
     text-align: center;
     margin-bottom: 70px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.warranty-logo {
+    margin-bottom: 30px;
+}
+
+.warranty-logo img {
+    display: inline-block;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.warranty-logo img:hover {
+    opacity: 1;
 }
 
 .warranty-cards-header .section-label {
@@ -3831,11 +3848,25 @@ a, button, input, textarea, select {
     font-weight: 800;
     line-height: 1.2;
     color: #1a1a1a;
-    margin: 0;
+    margin: 0 0 25px 0;
 }
 
 .warranty-cards-title .accent {
     color: var(--caramel);
+}
+
+.warranty-cards-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #555;
+    margin: 0;
+    text-align: center;
+}
+
+.warranty-cards-description strong {
+    color: var(--caramel);
+    font-weight: 600;
 }
 
 .warranty-cards-grid {
@@ -3843,7 +3874,7 @@ a, button, input, textarea, select {
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0 auto 70px;
     padding: 0 40px;
 }
 
@@ -3908,7 +3939,75 @@ a, button, input, textarea, select {
     font-weight: 700;
     color: #1a1a1a;
     line-height: 1.3;
+    margin: 0 0 15px 0;
+}
+
+.warranty-card-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #777;
     margin: 0;
+}
+
+/* CTA da Warranty Section */
+.warranty-cta-wrapper {
+    text-align: center;
+    padding: 0 20px;
+}
+
+.btn-warranty-cta {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sora', sans-serif;
+    background: linear-gradient(135deg, #ff943f 0%, #ff7b1f 100%);
+    padding: 28px 60px;
+    border-radius: 60px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.4s ease;
+    box-shadow: 0 12px 40px rgba(255, 148, 63, 0.4);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-warranty-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.btn-warranty-cta:hover::before {
+    left: 100%;
+}
+
+.btn-warranty-cta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(255, 148, 63, 0.6);
+}
+
+.cta-main-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+}
+
+.cta-sub-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.3;
 }
 
 /* Responsivo Warranty Cards */
@@ -3917,6 +4016,7 @@ a, button, input, textarea, select {
         grid-template-columns: 1fr;
         gap: 40px;
         padding: 0 30px;
+        margin-bottom: 60px;
     }
     
     .section-warranty-cards {
@@ -3925,6 +4025,10 @@ a, button, input, textarea, select {
     
     .warranty-cards-header {
         margin-bottom: 60px;
+    }
+
+    .warranty-cards-description {
+        font-size: 16px;
     }
 }
 
@@ -3937,10 +4041,20 @@ a, button, input, textarea, select {
         margin-bottom: 50px;
         padding: 0 20px;
     }
+
+    .warranty-logo img {
+        width: 140px;
+        height: auto;
+    }
+    
+    .warranty-cards-description {
+        font-size: 15px;
+    }
     
     .warranty-cards-grid {
         padding: 0 20px;
         gap: 35px;
+        margin-bottom: 50px;
     }
     
     .warranty-card-item {
@@ -3969,9 +4083,31 @@ a, button, input, textarea, select {
     .warranty-card-item-title {
         font-size: 20px;
     }
+
+    .warranty-card-description {
+        font-size: 14px;
+    }
+
+    .btn-warranty-cta {
+        padding: 24px 40px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .cta-main-text {
+        font-size: 20px;
+    }
+
+    .cta-sub-text {
+        font-size: 13px;
+    }
 }
 
 @media (max-width: 480px) {
+    .warranty-logo img {
+        width: 120px;
+    }
+
     .warranty-card-item {
         padding: 35px 25px;
     }
@@ -3996,6 +4132,22 @@ a, button, input, textarea, select {
     
     .warranty-card-item-title {
         font-size: 18px;
+    }
+
+    .warranty-card-description {
+        font-size: 13px;
+    }
+
+    .btn-warranty-cta {
+        padding: 22px 35px;
+    }
+
+    .cta-main-text {
+        font-size: 18px;
+    }
+
+    .cta-sub-text {
+        font-size: 12px;
     }
 }
 
