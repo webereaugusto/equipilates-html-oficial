@@ -446,10 +446,17 @@ body > * {
     letter-spacing: 3px;
     color: var(--caramel);
     margin-bottom: 30px;
+    opacity: 1;  /* LCP FIX: Visível por padrão */
+    transform: none;
+    filter: none;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animação apenas após o primeiro carregamento */
+.content-tag.animate-ready {
     opacity: 0;
     transform: translateX(-80px);
     filter: blur(10px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .content-tag.motion-in {
@@ -469,11 +476,18 @@ body > * {
 
 .title-line {
     display: block;
+    opacity: 1;  /* LCP FIX: Visível por padrão para melhor performance */
+    transform: none;
+    filter: none;
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: left center;
+}
+
+/* Animação apenas após o primeiro carregamento */
+.title-line.animate-ready {
     opacity: 0;
     transform: translateX(-100px) rotateX(20deg);
     filter: blur(15px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-    transform-origin: left center;
 }
 
 .title-line.motion-in {
@@ -491,10 +505,17 @@ body > * {
     line-height: 1.7;
     color: var(--gray-300);
     margin-bottom: 40px;
+    opacity: 1;  /* LCP FIX: Visível por padrão */
+    transform: none;
+    filter: none;
+    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animação apenas após o primeiro carregamento */
+.content-description.animate-ready {
     opacity: 0;
     transform: translateX(-60px) translateY(10px);
     filter: blur(8px);
-    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .content-description.motion-in {

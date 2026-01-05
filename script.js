@@ -555,7 +555,7 @@ function initHeroSlider() {
     const contentNumber = document.querySelector('.content-number');
     
     let currentIndex = 0;
-    const totalSlides = 4;
+    const totalSlides = 3;  // Reduzido de 4 para 3 para melhorar performance
     const autoPlayInterval = 5000; // 5 seconds per slide
     let autoPlayTimer = null;
     
@@ -591,14 +591,6 @@ function initHeroSlider() {
                 description: 'Desde 2006 exportando para 24+ países. Fábrica própria de 2.500m²<br/>com tecnologia de ponta em Resende-RJ.',
                 cta1: { text: 'Conhecer a Fábrica', link: '#manifesto' },
                 cta2: { text: 'Falar com Especialista', link: buildWhatsAppLink('Olá, gostaria de conhecer mais sobre a Equipilates.') }
-            },
-            {
-                number: '04',
-                tag: 'INOVACAO E GARANTIA',
-                title: ['EXCELENCIA E INOVACAO', 'EM CADA MOVIMENTO'],
-                description: 'Robustez e design avancado com 2 anos de garantia.<br/>Pagamento facilitado em ate 36x direto de fabrica.',
-                cta1: { text: 'Ver Linha Contemporanea', link: '#contemporary' },
-                cta2: { text: 'Baixar Catalogo', link: buildWhatsAppLink('Ola! Gostaria de receber o catalogo da Equipilates.') }
             }
         ],
         'en': [
@@ -625,14 +617,6 @@ function initHeroSlider() {
                 description: 'Exporting to 24+ countries since 2006. Own 2,500m² factory<br/>with cutting-edge technology in Brazil.',
                 cta1: { text: 'Discover Our Factory', link: '#manifesto' },
                 cta2: { text: 'Talk to an Expert', link: buildWhatsAppLink('Hello, I would like to learn more about Equipilates.') }
-            },
-            {
-                number: '04',
-                tag: 'INNOVATION AND WARRANTY',
-                title: ['EXCELLENCE AND INNOVATION', 'IN EVERY MOVE'],
-                description: 'Robust design with 2-year warranty.<br/>Up to 36 installments direct from factory.',
-                cta1: { text: 'See Contemporary Line', link: '#contemporary' },
-                cta2: { text: 'Get the Catalog', link: buildWhatsAppLink('Hello! I would like to receive the Equipilates catalog.') }
             }
         ],
         'es': [
@@ -659,14 +643,6 @@ function initHeroSlider() {
                 description: 'Exportando a 24+ países desde 2006. Fábrica propia de 2.500m²<br/>con tecnología de punta en Brasil.',
                 cta1: { text: 'Conocer la Fábrica', link: '#manifesto' },
                 cta2: { text: 'Hablar con Experto', link: buildWhatsAppLink('Hola, me gustaría conocer más sobre Equipilates.') }
-            },
-            {
-                number: '04',
-                tag: 'INNOVACION Y GARANTIA',
-                title: ['EXCELENCIA E INNOVACION', 'EN CADA MOVIMIENTO'],
-                description: 'Robustez y diseno avanzado con 2 anos de garantia.<br/>Hasta 36 cuotas directo de fabrica.',
-                cta1: { text: 'Ver Linea Contemporanea', link: '#contemporary' },
-                cta2: { text: 'Descargar Catalogo', link: buildWhatsAppLink('Hola! Quisiera recibir el catalogo de Equipilates.') }
             }
         ],
         'de': [
@@ -693,14 +669,6 @@ function initHeroSlider() {
                 description: 'Seit 2006 in 24+ Länder exportierend. Eigene 2.500m² Fabrik<br/>mit modernster Technologie in Brasilien.',
                 cta1: { text: 'Fabrik Entdecken', link: '#manifesto' },
                 cta2: { text: 'Mit Experten Sprechen', link: buildWhatsAppLink('Hallo, ich möchte mehr über Equipilates erfahren.') }
-            },
-            {
-                number: '04',
-                tag: 'INNOVATION UND GARANTIE',
-                title: ['EXZELLENZ UND INNOVATION', 'IN JEDER BEWEGUNG'],
-                description: 'Robustheit und fortschrittliches Design mit 2 Jahren Garantie.<br/>Bis zu 36 Raten direkt ab Werk.',
-                cta1: { text: 'Moderne Linie Sehen', link: '#contemporary' },
-                cta2: { text: 'Katalog Herunterladen', link: buildWhatsAppLink('Hallo! Ich mochte den Equipilates-Katalog erhalten.') }
             }
         ]
     };
@@ -919,12 +887,16 @@ function initHeroSlider() {
         const description = document.querySelector('.content-description');
         const ctaContainer = document.querySelector('.content-cta');
 
-        // Add motion classes with stagger for initial load
-        setTimeout(() => tag.classList.add('motion-in'), 350);
-        setTimeout(() => titleLines[0].classList.add('motion-in'), 520);
-        setTimeout(() => titleLines[1].classList.add('motion-in'), 680);
-        setTimeout(() => description.classList.add('motion-in'), 830);
-        setTimeout(() => ctaContainer.classList.add('motion-in-reverse'), 980);
+        // LCP FIX: Conteúdo já está visível via CSS
+        // Apenas preparamos as classes para animações de transição entre slides
+        // Adicionamos animate-ready após 2s para permitir transições futuras
+        setTimeout(() => {
+            tag.classList.add('animate-ready', 'motion-in');
+            titleLines[0].classList.add('animate-ready', 'motion-in');
+            titleLines[1].classList.add('animate-ready', 'motion-in');
+            description.classList.add('animate-ready', 'motion-in');
+            ctaContainer.classList.add('motion-in-reverse');
+        }, 2000);
     }
     
     // Initialize first slide on load
