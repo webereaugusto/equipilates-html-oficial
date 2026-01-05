@@ -336,28 +336,47 @@ function initClassicaCarousel() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Funções críticas para o LCP (executar imediatamente)
     initNavigation();
-    initScrollProgress();
     initHeroSlider();
-    initUpgradeWizard();
-    initStickyScroll();
-    initHorizontalScroll();
-    initTextReveal();
-    initImageGridScale();
-    initCounters();
-    initInnovationCards();
-    initSplitText();
-    initFormAnimations();
-    initSmoothScroll();
-    initElasticAnimations();
-    initFigmaMotion();
-    initParallax();
-    initSmoothScrollMomentum();
-    initGalleryFilters();
-    initClassicaCarousel();
-    initContemporaneaCarousel();
-    initTestimonialsSocialCarousel();
-    initFAQAccordion();
+    
+    // Funções de baixa prioridade - adiar para depois do LCP
+    // Isso reduz reflow forçado e melhora FCP/LCP
+    const initNonCritical = () => {
+        initScrollProgress();
+        initUpgradeWizard();
+        initStickyScroll();
+        initHorizontalScroll();
+        initTextReveal();
+        initImageGridScale();
+        initCounters();
+        initInnovationCards();
+        initSplitText();
+        initFormAnimations();
+        initSmoothScroll();
+        initElasticAnimations();
+        initFigmaMotion();
+        initParallax();
+        initSmoothScrollMomentum();
+        initGalleryFilters();
+        initFAQAccordion();
+    };
+    
+    // Carrosséis são inicializados só quando visíveis (lazy init)
+    const initCarousels = () => {
+        initClassicaCarousel();
+        initContemporaneaCarousel();
+        initTestimonialsSocialCarousel();
+    };
+    
+    // Usar requestIdleCallback se disponível, senão setTimeout
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(initNonCritical, { timeout: 2000 });
+        requestIdleCallback(initCarousels, { timeout: 3000 });
+    } else {
+        setTimeout(initNonCritical, 100);
+        setTimeout(initCarousels, 200);
+    }
 });
 
 // ==========================================

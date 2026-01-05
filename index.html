@@ -334,23 +334,27 @@
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     
-    <!-- Preload de recursos críticos -->
-    <link rel="preload" href="images/im1.webp" as="image" type="image/webp">
+    <!-- Preload de recursos críticos (LCP optimization) -->
+    <link rel="preload" href="images/im1.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
     
     <!-- ═══════════════════════════════════════════════════════════════════════════
          ESTILOS
     ═══════════════════════════════════════════════════════════════════════════ -->
     
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="i18n.js" as="script">
-    
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts - Carregamento Assíncrono (não bloqueia renderização) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap"></noscript>
+    
+    <!-- CSS Crítico Inline para fontes (fallback imediato) -->
+    <style>
+        body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        h1, h2, h3, .title-line { font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    </style>
     
     <!-- ═══════════════════════════════════════════════════════════════════════════
          SEO ADICIONAL E HREFLANG (Multi-idioma)
@@ -391,7 +395,10 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-logo">
-            <img src="images/logo.png" alt="Equipilates - Equipamentos de Pilates" class="logo-img">
+            <picture>
+                <source srcset="images/logo.png" type="image/png">
+                <img src="images/logo.png" alt="Equipilates - Equipamentos de Pilates" class="logo-img" width="180" height="40" decoding="async">
+            </picture>
         </div>
         <div class="lang-switch" aria-label="Selecionar idioma">
             <button class="lang-btn active" type="button" data-lang="pt-BR">PT</button>
@@ -488,7 +495,7 @@
                 <h2 class="wire-title" data-i18n="wire.title">
                     Referência em Equipamentos de Pilates de alta performance. Elevamos o padrão técnico do seu estúdio.
                 </h2>
-                <img src="images/logo.png" alt="Equipilates - Equipamentos de Pilates" class="wire-logo">
+                <img src="images/logo.png" alt="Equipilates - Equipamentos de Pilates" class="wire-logo" loading="lazy" decoding="async">
             </div>
 
             <!-- Bloco 1: Linha Clássica -->
@@ -498,7 +505,7 @@
                     Fidelidade absoluta ao método original de Joseph Pilates. Nossa linha clássica utiliza medidas exatas e molas calibradas para garantir a biomecânica pura, ideal para estúdios que priorizam a tradição e resultados técnicos.
                 </p>
                 <div class="wire-image-wrapper">
-                    <img src="images/bg/studio classico.webp" alt="Equipamentos de Pilates - Linha Clássica Cadillac">
+                    <img src="images/bg/studio classico.webp" alt="Equipamentos de Pilates - Linha Clássica Cadillac" loading="lazy" decoding="async">
                 </div>
                 <a href="#linha-classica" class="btn-wire-card" data-i18n="wire.classicCta">Ver Linha Clássica →</a>
             </div>
@@ -510,7 +517,7 @@
                     Inovação e versatilidade para o mercado fitness atual. Nossa linha contemporânea oferece ajustes rápidos e ergonomia avançada, sendo perfeita para estúdios dinâmicos que buscam alto fluxo de alunos e máxima durabilidade.
                 </p>
                 <div class="wire-image-wrapper">
-                    <img src="images/bg/studio contemporaneo.webp" alt="Equipamentos de Pilates - Linha Contemporânea Reformer">
+                    <img src="images/bg/studio contemporaneo.webp" alt="Equipamentos de Pilates - Linha Contemporânea Reformer" loading="lazy" decoding="async">
                 </div>
                 <a href="#linha-contemporanea" class="btn-wire-card" data-i18n="wire.contempCta">Ver Linha Contemporânea →</a>
             </div>
@@ -619,7 +626,7 @@
     <section class="section-core-values" id="valores">
         <div class="core-values-container">
             <div class="core-values-image">
-                <img src="images/bg/medio-webp/reformer-torre.webp" alt="Equipamentos para Studios de Pilates - Reformer Torre Equipilates">
+                <img src="images/bg/medio-webp/reformer-torre.webp" alt="Equipamentos para Studios de Pilates - Reformer Torre Equipilates" loading="lazy" decoding="async">
             </div>
             <div class="core-values-content">
                 <span class="section-label" data-i18n="values.label">EQUIPAMENTOS PARA STUDIOS DE PILATES</span>
@@ -1764,7 +1771,7 @@
                 <p class="support-quote" data-i18n="support.quote">"Seu sucesso contínuo é o nosso maior objetivo."</p>
             </div>
             <div class="split-image split-image-square" data-scroll-scale>
-                <img src="images/bg/studio-rodape.webp" alt="Suporte Equipilates">
+                <img src="images/bg/studio-rodape.webp" alt="Suporte Equipilates" loading="lazy" decoding="async" width="616" height="607">
             </div>
         </div>
     </section>
