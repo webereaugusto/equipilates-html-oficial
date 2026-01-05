@@ -5173,11 +5173,11 @@ a, button, input, textarea, select {
     font-family: 'Sora', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--caramel);
+    color: #d07820;  /* Laranja mais escuro para melhor contraste */
     text-decoration: none;
     padding: 12px 0;
     margin-top: 20px;
-    border-bottom: 2px solid var(--caramel);
+    border-bottom: 2px solid #d07820;
     transition: all 0.3s ease;
 }
 
@@ -5355,7 +5355,9 @@ a, button, input, textarea, select {
     margin-bottom: 10px;
 }
 
-.stat-label {
+/* stat-label para seções com fundo escuro */
+.bg-dark .stat-label,
+.section-process .stat-label {
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.6);
@@ -5555,10 +5557,10 @@ a, button, input, textarea, select {
     font-family: 'Sora', sans-serif;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--caramel);
+    color: #d07820;  /* Laranja escuro para melhor contraste */
     text-decoration: none;
     padding: 12px 0;
-    border-bottom: 2px solid var(--caramel);
+    border-bottom: 2px solid #d07820;
     transition: all 0.3s ease;
 }
 
@@ -7656,11 +7658,13 @@ a, button, input, textarea, select {
     margin-left: 5px;
 }
 
-.stat-label {
+/* Stats section - garante contraste em fundo claro */
+.section-stats .stat-label,
+.stat-card .stat-label {
     font-family: 'Sora', sans-serif;
     font-size: 13px;
     font-weight: 600;
-    color: #555;
+    color: #333 !important;  /* Cor escura para melhor leitura */
     margin-top: 18px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -7671,19 +7675,32 @@ a, button, input, textarea, select {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    align-items: center;
+    gap: 15px;
     margin-top: 50px;
 }
 
-.countries-list span {
-    font-size: 48px;
-    line-height: 1;
+.country-flag {
+    width: 48px;
+    height: 36px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     transition: transform 0.3s ease;
     cursor: default;
 }
 
-.countries-list span:hover {
-    transform: scale(1.2);
+.country-flag:hover {
+    transform: scale(1.15);
+}
+
+.country-more {
+    font-family: 'Sora', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--caramel);
+    padding: 5px 15px;
+    background: rgba(255, 148, 63, 0.1);
+    border-radius: 8px;
 }
 
 /* CTA dentro da seção Stats */
@@ -8881,10 +8898,10 @@ a, button, input, textarea, select {
     color: #ffb060;  /* Laranja mais claro para melhor contraste em fundos escuros */
 }
 
-/* Links e CTAs com melhor contraste */
-.btn-wire-card,
-.btn-core-value,
-.btn-features-cta {
+/* Links e CTAs com melhor contraste - apenas em fundos escuros */
+.bg-dark .btn-wire-card,
+.bg-dark .btn-core-value,
+.bg-dark .btn-features-cta {
     color: #fff;
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
