@@ -1,201 +1,123 @@
 // ==========================================
 // INTERNATIONALIZATION (i18n)
+// Traduções completas carregadas de arquivos JSON
 // ==========================================
-const I18N = {
-    'pt-BR': {
-        'nav.home': 'Inicio',
-        'nav.diferencial': 'Diferencial',
-        'nav.classic': 'Classica',
-        'nav.contemporary': 'Contemporanea',
-        'nav.contact': 'Contato',
-        'hero.trustLine': 'Desde 2006 - Fabrica em Resende-RJ - Presenca em 15+ paises',
-        'hero.scrollHint': 'Role para explorar',
-        'wire.label': 'QUEM É A EQUIPILATES?',
-        'wire.title': 'Referência em Equipamentos de Pilates de alta performance. Elevamos o padrão técnico do seu estúdio.',
-        'wire.classicTitle': 'Equipamentos de Pilates – Linha Clássica',
-        'wire.classicText': 'Fidelidade absoluta ao método original de Joseph Pilates. Nossa linha clássica utiliza medidas exatas e molas calibradas para garantir a biomecânica pura, ideal para estúdios que priorizam a tradição e resultados técnicos.',
-        'wire.contempTitle': 'Equipamentos de Pilates – Linha Contemporânea',
-        'wire.contempText': 'Inovação e versatilidade para o mercado fitness atual. Nossa linha contemporânea oferece ajustes rápidos e ergonomia avançada, sendo perfeita para estúdios dinâmicos que buscam alto fluxo de alunos e máxima durabilidade.',
-        'features.subtitle': 'Mais do que aparelhos, uma estrutura industrial dedicada ao sucesso do seu estudio.',
-        'features.item1.title': 'Forca Fabril',
-        'features.item1.text': 'Parque industrial proprio de 2.500m com controle total de qualidade em cada etapa.',
-        'features.item2.title': 'DNA Fisioterapeuta',
-        'features.item2.text': 'Equipamentos projetados por especialistas em biomecanica e saude do corpo humano.',
-        'features.item3.title': 'Padrao de Exportacao',
-        'features.item3.text': 'Qualidade validada nos mercados mais exigentes do mundo, como EUA, Europa e Asia.',
-        'features.item4.title': 'Materiais Nobres',
-        'features.item4.text': 'Estruturas em Aco Inox e Madeira Macica que garantem longevidade extrema ao investimento.',
-        'features.item5.title': 'Garantia Real',
-        'features.item5.text': 'Seguranca total com 2 anos de garantia e assistencia tecnica especializada direto de fabrica.',
-        'features.item6.title': 'Reposicao Imediata',
-        'features.item6.text': 'Amplo estoque de pecas e acessorios para garantir que seu estudio nunca precise parar.',
-        'gallery.kicker': 'PORTFOLIO E LINHAS',
-        'gallery.subtitle': 'Explore a precisao tecnica e o design superior que definem a marca Equipilates.',
-        'gallery.filterAll': 'TODOS',
-        'gallery.filterClassic': 'LINHA CLASSICA',
-        'gallery.filterContemp': 'LINHA CONTEMPORANEA',
-        'gallery.filterAcessorios': 'ACESSORIOS',
-        'gallery.catAcessorios': 'ACESSORIOS',
-        'cta.banner.btn': 'SOLICITAR CONSULTORIA',
-        'contact.kicker': 'FALE CONOSCO',
-        'contact.title': 'Pronto para planejar o proximo passo do seu estudio?',
-        'contact.body': 'Fale com um consultor e receba orientacao para escolher linha, kit e layout ideal para o seu espaco.',
-        'contact.primaryCta': 'Falar no WhatsApp',
-        'footer.tagline': 'Excelencia em equipamentos de pilates desde 2006',
-        'footer.products': 'Produtos',
-        'footer.classicLink': 'Linha Classica',
-        'footer.contemporaryLink': 'Linha Contemporanea',
-        'footer.company': 'Empresa',
-        'footer.about': 'Sobre Nos',
-        'footer.contactLink': 'Contato',
-        'footer.social': 'Redes Sociais',
-        'footer.copyright': '2024 EquiPilates. Todos os direitos reservados.'
-    },
-    'en': {
-        'nav.home': 'Home',
-        'nav.diferencial': 'Difference',
-        'nav.classic': 'Classic',
-        'nav.contemporary': 'Contemporary',
-        'nav.contact': 'Contact',
-        'hero.trustLine': 'Since 2006 - Factory in Resende-RJ - Present in 15+ countries',
-        'hero.scrollHint': 'Scroll to explore',
-        'wire.label': 'WHO IS EQUIPILATES?',
-        'wire.title': 'Reference in high-performance Pilates Equipment. We elevate the technical standard of your studio.',
-        'wire.classicTitle': 'Pilates Equipment - Classic Line',
-        'wire.classicText': 'Absolute fidelity to Joseph Pilates original method. Our classic line uses exact measurements and calibrated springs to guarantee pure biomechanics.',
-        'wire.contempTitle': 'Pilates Equipment - Contemporary Line',
-        'wire.contempText': 'Innovation and versatility for todays fitness market. Our contemporary line offers quick adjustments and advanced ergonomics.',
-        'features.subtitle': 'More than just equipment, an industrial structure dedicated to your studios success.',
-        'features.item1.title': 'Industrial Strength',
-        'features.item1.text': 'Own industrial park of 2,500m with total quality control at each stage.',
-        'features.item2.title': 'Physiotherapist DNA',
-        'features.item2.text': 'Equipment designed by specialists in biomechanics and human body health.',
-        'features.item3.title': 'Export Standard',
-        'features.item3.text': 'Quality validated in the worlds most demanding markets.',
-        'features.item4.title': 'Noble Materials',
-        'features.item4.text': 'Stainless Steel and Solid Wood structures that guarantee extreme longevity.',
-        'features.item5.title': 'Real Warranty',
-        'features.item5.text': 'Total safety with 2 years warranty and specialized technical assistance.',
-        'features.item6.title': 'Immediate Replacement',
-        'features.item6.text': 'Large stock of parts and accessories to ensure your studio never stops.',
-        'gallery.kicker': 'PORTFOLIO AND LINES',
-        'gallery.subtitle': 'Explore the technical precision and superior design that define Equipilates.',
-        'gallery.filterAll': 'ALL',
-        'gallery.filterClassic': 'CLASSIC LINE',
-        'gallery.filterContemp': 'CONTEMPORARY LINE',
-        'gallery.filterAcessorios': 'ACCESSORIES',
-        'gallery.catAcessorios': 'ACCESSORIES',
-        'cta.banner.btn': 'REQUEST CONSULTANCY',
-        'contact.kicker': 'CONTACT US',
-        'contact.title': 'Ready to plan your studios next step?',
-        'contact.body': 'Speak with a consultant and receive guidance to choose the ideal line and layout.',
-        'contact.primaryCta': 'Talk on WhatsApp',
-        'footer.tagline': 'Excellence in pilates equipment since 2006',
-        'footer.products': 'Products',
-        'footer.classicLink': 'Classic Line',
-        'footer.contemporaryLink': 'Contemporary Line',
-        'footer.company': 'Company',
-        'footer.about': 'About Us',
-        'footer.contactLink': 'Contact',
-        'footer.social': 'Social Media',
-        'footer.copyright': '2024 EquiPilates. All rights reserved.'
-    },
-    'es': {
-        'nav.home': 'Inicio',
-        'nav.diferencial': 'Diferencial',
-        'nav.classic': 'Clasica',
-        'nav.contemporary': 'Contemporanea',
-        'nav.contact': 'Contacto',
-        'hero.trustLine': 'Desde 2006 - Fabrica en Resende-RJ - Presencia en 15+ paises',
-        'hero.scrollHint': 'Desliza para explorar',
-        'wire.label': 'QUIEN ES EQUIPILATES?',
-        'wire.title': 'Referencia en Equipos de Pilates de alto rendimiento.',
-        'wire.classicTitle': 'Equipos de Pilates - Linea Clasica',
-        'wire.classicText': 'Fidelidad absoluta al metodo original de Joseph Pilates.',
-        'wire.contempTitle': 'Equipos de Pilates - Linea Contemporanea',
-        'wire.contempText': 'Innovacion y versatilidad para el mercado fitness actual.',
-        'features.subtitle': 'Mas que aparatos, una estructura industrial dedicada al exito de su estudio.',
-        'features.item1.title': 'Fuerza Fabril',
-        'features.item1.text': 'Parque industrial propio de 2.500m con control total de calidad.',
-        'features.item2.title': 'ADN Fisioterapeuta',
-        'features.item2.text': 'Equipos disenados por especialistas en biomecanica.',
-        'features.item3.title': 'Estandar de Exportacion',
-        'features.item3.text': 'Calidad validada en los mercados mas exigentes del mundo.',
-        'features.item4.title': 'Materiales Nobles',
-        'features.item4.text': 'Estructuras en Acero Inoxidable y Madera Maciza.',
-        'features.item5.title': 'Garantia Real',
-        'features.item5.text': 'Seguridad total con 2 anos de garantia.',
-        'features.item6.title': 'Reposicion Inmediata',
-        'features.item6.text': 'Amplio stock de piezas y accesorios.',
-        'gallery.kicker': 'PORTAFOLIO Y LINEAS',
-        'gallery.subtitle': 'Explore la precision tecnica y el diseno superior de Equipilates.',
-        'gallery.filterAll': 'TODOS',
-        'gallery.filterClassic': 'LINEA CLASICA',
-        'gallery.filterContemp': 'LINEA CONTEMPORANEA',
-        'gallery.filterAcessorios': 'ACCESORIOS',
-        'gallery.catAcessorios': 'ACCESORIOS',
-        'cta.banner.btn': 'SOLICITAR CONSULTORIA',
-        'contact.kicker': 'CONTACTENOS',
-        'contact.title': 'Listo para planificar el proximo paso de su estudio?',
-        'contact.body': 'Hable con un consultor y reciba orientacion.',
-        'contact.primaryCta': 'Hablar por WhatsApp',
-        'footer.tagline': 'Excelencia en equipos de pilates desde 2006',
-        'footer.products': 'Productos',
-        'footer.classicLink': 'Linea Clasica',
-        'footer.contemporaryLink': 'Linea Contemporanea',
-        'footer.company': 'Empresa',
-        'footer.about': 'Sobre Nosotros',
-        'footer.contactLink': 'Contacto',
-        'footer.social': 'Redes Sociales',
-        'footer.copyright': '2024 EquiPilates. Todos los derechos reservados.'
-    },
-    'de': {
-        'nav.home': 'Startseite',
-        'nav.diferencial': 'Unterschied',
-        'nav.classic': 'Klassisch',
-        'nav.contemporary': 'Modern',
-        'nav.contact': 'Kontakt',
-        'hero.trustLine': 'Seit 2006 - Fabrik in Resende-RJ - Prasenz in 15+ Landern',
-        'hero.scrollHint': 'Scrollen zum Erkunden',
-        'wire.label': 'WER IST EQUIPILATES?',
-        'wire.title': 'Referenz fur Hochleistungs-Pilates-Gerate.',
-        'wire.classicTitle': 'Pilates-Gerate - Klassische Linie',
-        'wire.classicText': 'Absolute Treue zur Originalmethode von Joseph Pilates.',
-        'wire.contempTitle': 'Pilates-Gerate - Moderne Linie',
-        'wire.contempText': 'Innovation und Vielseitigkeit fur den heutigen Fitnessmarkt.',
-        'features.subtitle': 'Mehr als nur Gerate - eine industrielle Struktur fur Ihren Erfolg.',
-        'features.item1.title': 'Industrielle Starke',
-        'features.item1.text': 'Eigener Industriepark von 2.500m mit vollstandiger Qualitatskontrolle.',
-        'features.item2.title': 'Physiotherapeuten-DNA',
-        'features.item2.text': 'Gerate entworfen von Spezialisten fur Biomechanik.',
-        'features.item3.title': 'Export-Standard',
-        'features.item3.text': 'Qualitat validiert in den anspruchsvollsten Markten der Welt.',
-        'features.item4.title': 'Edle Materialien',
-        'features.item4.text': 'Strukturen aus Edelstahl und Massivholz.',
-        'features.item5.title': 'Echte Garantie',
-        'features.item5.text': 'Volle Sicherheit mit 2 Jahren Garantie.',
-        'features.item6.title': 'Sofortiger Ersatz',
-        'features.item6.text': 'Grosses Lager an Teilen und Zubehor.',
-        'gallery.kicker': 'PORTFOLIO UND LINIEN',
-        'gallery.subtitle': 'Entdecken Sie die technische Prazision von Equipilates.',
-        'gallery.filterAll': 'ALLE',
-        'gallery.filterClassic': 'KLASSISCHE LINIE',
-        'gallery.filterContemp': 'MODERNE LINIE',
-        'gallery.filterAcessorios': 'ZUBEHOR',
-        'gallery.catAcessorios': 'ZUBEHOR',
-        'cta.banner.btn': 'BERATUNG ANFORDERN',
-        'contact.kicker': 'KONTAKTIEREN SIE UNS',
-        'contact.title': 'Bereit fur den nachsten Schritt Ihres Studios?',
-        'contact.body': 'Sprechen Sie mit einem Berater.',
-        'contact.primaryCta': 'Uber WhatsApp kontaktieren',
-        'footer.tagline': 'Exzellenz bei Pilates-Geraten seit 2006',
-        'footer.products': 'Produkte',
-        'footer.classicLink': 'Klassische Linie',
-        'footer.contemporaryLink': 'Moderne Linie',
-        'footer.company': 'Unternehmen',
-        'footer.about': 'Uber uns',
-        'footer.contactLink': 'Kontakt',
-        'footer.social': 'Soziale Medien',
-        'footer.copyright': '2024 EquiPilates. Alle Rechte vorbehalten.'
+
+// Cache para as traduções
+const I18N = {};
+
+// Idiomas suportados
+const SUPPORTED_LANGS = ['pt-BR', 'en', 'es', 'de'];
+
+// Idioma padrão
+let currentLang = localStorage.getItem('language') || 'pt-BR';
+
+// Flag para indicar se as traduções estão carregadas
+let translationsReady = false;
+
+// Função para carregar traduções de arquivo JSON
+async function loadTranslations(lang) {
+    if (I18N[lang]) {
+        return I18N[lang];
     }
-};
+    
+    try {
+        const response = await fetch(`locales/${lang}.json`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const translations = await response.json();
+        I18N[lang] = translations;
+        return translations;
+    } catch (error) {
+        console.error(`Error loading translations for ${lang}:`, error);
+        return {};
+    }
+}
+
+// Pré-carregar todas as traduções
+async function preloadAllTranslations() {
+    const promises = SUPPORTED_LANGS.map(lang => loadTranslations(lang));
+    await Promise.all(promises);
+    translationsReady = true;
+    console.log('All translations preloaded:', Object.keys(I18N));
+}
+
+// Função para obter texto traduzido
+function t(key) {
+    const translations = I18N[currentLang] || I18N['pt-BR'] || {};
+    return translations[key] || key;
+}
+
+// Função para aplicar traduções na página
+function applyI18nStrings() {
+    const translations = I18N[currentLang] || {};
+    
+    if (Object.keys(translations).length === 0) {
+        console.warn('No translations found for:', currentLang);
+        return;
+    }
+    
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const translation = translations[key];
+        
+        if (translation && typeof translation === 'string') {
+            el.textContent = translation;
+        }
+    });
+    
+    // Também aplicar em placeholders se existirem
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        const translation = translations[key];
+        
+        if (translation && typeof translation === 'string') {
+            el.setAttribute('placeholder', translation);
+        }
+    });
+    
+    console.log('Applied translations for:', currentLang, '- Elements updated:', document.querySelectorAll('[data-i18n]').length);
+}
+
+// Função principal para trocar idioma (SÍNCRONA se traduções já carregadas)
+function changeLanguage(lang) {
+    if (!SUPPORTED_LANGS.includes(lang)) {
+        console.warn('Unsupported language:', lang);
+        return;
+    }
+    
+    currentLang = lang;
+    localStorage.setItem('language', lang);
+    
+    // Se as traduções já estiverem carregadas, aplicar imediatamente
+    if (I18N[lang]) {
+        applyI18nStrings();
+        document.documentElement.lang = lang === 'pt-BR' ? 'pt-BR' : lang;
+        console.log(`Language changed to: ${lang}`);
+    } else {
+        // Carregar e depois aplicar (fallback)
+        loadTranslations(lang).then(() => {
+            applyI18nStrings();
+            document.documentElement.lang = lang === 'pt-BR' ? 'pt-BR' : lang;
+            console.log(`Language changed to: ${lang} (loaded async)`);
+        });
+    }
+}
+
+// Inicialização - Pré-carregar TODAS as traduções
+document.addEventListener('DOMContentLoaded', async () => {
+    // Pré-carregar todas as traduções
+    await preloadAllTranslations();
+    
+    // Aplicar traduções iniciais
+    applyI18nStrings();
+    
+    console.log(`i18n initialized with language: ${currentLang}`);
+});
+
+// Exportar funções para uso global
+window.changeLanguage = changeLanguage;
+window.t = t;
+window.I18N = I18N;
+window.applyI18nStrings = applyI18nStrings;

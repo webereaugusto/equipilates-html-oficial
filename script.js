@@ -206,9 +206,15 @@ function initClassicaCarousel() {
     
     // Calcular largura do slide
     function calculateSlideWidth() {
-        const gap = 30;
+        // No mobile (1 slide), gap é 0; caso contrário, 30
+        const gap = slidesPerView === 1 ? 0 : 30;
         const containerWidth = carousel.offsetWidth;
         slideWidth = (containerWidth - (gap * (slidesPerView - 1))) / slidesPerView;
+    }
+    
+    // Obter gap atual
+    function getCurrentGap() {
+        return slidesPerView === 1 ? 0 : 30;
     }
     
     // Criar dots
@@ -236,7 +242,7 @@ function initClassicaCarousel() {
     // Ir para slide específico
     function goToSlide(index) {
         currentIndex = Math.max(0, Math.min(index, maxIndex));
-        const gap = 30;
+        const gap = getCurrentGap();
         const offset = currentIndex * (slideWidth + gap);
         track.style.transform = `translateX(-${offset}px)`;
         updateDots();
@@ -389,9 +395,15 @@ function initContemporaneaCarousel() {
     
     // Calcular largura do slide
     function calculateSlideWidth() {
-        const gap = 30;
+        // No mobile (1 slide), gap é 0; caso contrário, 30
+        const gap = slidesPerView === 1 ? 0 : 30;
         const containerWidth = carousel.offsetWidth;
         slideWidth = (containerWidth - (gap * (slidesPerView - 1))) / slidesPerView;
+    }
+    
+    // Obter gap atual
+    function getCurrentGap() {
+        return slidesPerView === 1 ? 0 : 30;
     }
     
     // Criar dots
@@ -419,7 +431,7 @@ function initContemporaneaCarousel() {
     // Ir para slide específico
     function goToSlide(index) {
         currentIndex = Math.max(0, Math.min(index, maxIndex));
-        const gap = 30;
+        const gap = getCurrentGap();
         const offset = currentIndex * (slideWidth + gap);
         track.style.transform = `translateX(-${offset}px)`;
         updateDots();
@@ -699,17 +711,10 @@ function initHeroSlider() {
     }
 
     function applyI18nStrings(lang) {
-        const dict = I18N[lang] || I18N['pt-BR'];
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            const value = dict[key];
-            if (typeof value === 'string') el.textContent = value;
-        });
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-            const value = dict[key];
-            if (typeof value === 'string') el.setAttribute('placeholder', value);
-        });
+        // Always use changeLanguage from i18n.js which loads JSON files
+        if (typeof window.changeLanguage === 'function') {
+            window.changeLanguage(lang);
+        }
     }
 
     // i18n translations are loaded from i18n.js
