@@ -574,7 +574,7 @@ function initHeroSlider() {
                 title: ['EQUIPAMENTOS DE PILATES', 'PROFISSIONAIS PARA SEU ESTÚDIO'],
                 description: 'Linha Clássica e Contemporânea com 2 anos de garantia.<br/>Mais de 30.000 estúdios equipados em 24+ países.',
                 cta1: { text: 'Solicitar Orçamento', link: buildWhatsAppLink('Olá, vim pelo site da Equipilates e gostaria de solicitar um orçamento.') },
-                cta2: { text: 'Conhecer Nossa História', link: '#manifesto' }
+                cta2: { text: 'Veja Mais', link: '#diferencial' }
             },
             {
                 number: '02',
@@ -589,7 +589,7 @@ function initHeroSlider() {
                 tag: 'LÍDER GLOBAL',
                 title: ['A MAIOR FÁBRICA', 'DE PILATES DA AMÉRICA LATINA'],
                 description: 'Desde 2006 exportando para 24+ países. Fábrica própria de 5.000m²<br/>com tecnologia de ponta em Resende-RJ.',
-                cta1: { text: 'Conhecer a Fábrica', link: '#manifesto' },
+                cta1: { text: 'Veja Mais', link: '#diferencial' },
                 cta2: { text: 'Falar com Especialista', link: buildWhatsAppLink('Olá, gostaria de conhecer mais sobre a Equipilates.') }
             }
         ],
@@ -600,7 +600,7 @@ function initHeroSlider() {
                 title: ['PILATES EQUIPMENT', 'PROFESSIONAL FOR YOUR STUDIO'],
                 description: 'Classic and Contemporary Lines with 2-year warranty.<br/>Over 30,000 studios equipped in 24+ countries.',
                 cta1: { text: 'Request a Quote', link: buildWhatsAppLink('Hello, I would like a quote for Pilates equipment.') },
-                cta2: { text: 'Our Story', link: '#manifesto' }
+                cta2: { text: 'See More', link: '#diferencial' }
             },
             {
                 number: '02',
@@ -614,8 +614,8 @@ function initHeroSlider() {
                 number: '03',
                 tag: 'GLOBAL LEADER',
                 title: ['THE LARGEST PILATES', 'FACTORY IN LATIN AMERICA'],
-                description: 'Exporting to 24+ countries since 2006. Own 2,500m² factory<br/>with cutting-edge technology in Brazil.',
-                cta1: { text: 'Discover Our Factory', link: '#manifesto' },
+                description: 'Exporting to 24+ countries since 2006. Own 5,000m² factory<br/>with cutting-edge technology in Brazil.',
+                cta1: { text: 'See More', link: '#diferencial' },
                 cta2: { text: 'Talk to an Expert', link: buildWhatsAppLink('Hello, I would like to learn more about Equipilates.') }
             }
         ],
@@ -626,7 +626,7 @@ function initHeroSlider() {
                 title: ['EQUIPOS DE PILATES', 'PROFESIONALES PARA SU ESTUDIO'],
                 description: 'Línea Clásica y Contemporánea con 2 años de garantía.<br/>Más de 30.000 estudios equipados en 24+ países.',
                 cta1: { text: 'Solicitar Cotización', link: buildWhatsAppLink('Hola, quisiera una cotización para equipos de Pilates.') },
-                cta2: { text: 'Nuestra Historia', link: '#manifesto' }
+                cta2: { text: 'Ver Más', link: '#diferencial' }
             },
             {
                 number: '02',
@@ -641,7 +641,7 @@ function initHeroSlider() {
                 tag: 'LÍDER GLOBAL',
                 title: ['LA MAYOR FÁBRICA', 'DE PILATES DE LATINOAMÉRICA'],
                 description: 'Exportando a 24+ países desde 2006. Fábrica propia de 5.000m²<br/>con tecnología de punta en Brasil.',
-                cta1: { text: 'Conocer la Fábrica', link: '#manifesto' },
+                cta1: { text: 'Ver Más', link: '#diferencial' },
                 cta2: { text: 'Hablar con Experto', link: buildWhatsAppLink('Hola, me gustaría conocer más sobre Equipilates.') }
             }
         ],
@@ -652,7 +652,7 @@ function initHeroSlider() {
                 title: ['PILATES-GERÄTE', 'PROFESSIONELL FÜR IHR STUDIO'],
                 description: 'Klassische und Zeitgenössische Linien mit 2 Jahren Garantie.<br/>Über 30.000 Studios in 24+ Ländern ausgestattet.',
                 cta1: { text: 'Angebot Anfordern', link: buildWhatsAppLink('Hallo, ich möchte ein Angebot für Pilates-Geräte.') },
-                cta2: { text: 'Unsere Geschichte', link: '#manifesto' }
+                cta2: { text: 'Mehr Sehen', link: '#diferencial' }
             },
             {
                 number: '02',
@@ -667,7 +667,7 @@ function initHeroSlider() {
                 tag: 'GLOBALER MARKTFÜHRER',
                 title: ['DIE GRÖSSTE PILATES-', 'FABRIK IN LATEINAMERIKA'],
                 description: 'Seit 2006 in 24+ Länder exportierend. Eigene 5.000m² Fabrik<br/>mit modernster Technologie in Brasilien.',
-                cta1: { text: 'Fabrik Entdecken', link: '#manifesto' },
+                cta1: { text: 'Mehr Sehen', link: '#diferencial' },
                 cta2: { text: 'Mit Experten Sprechen', link: buildWhatsAppLink('Hallo, ich möchte mehr über Equipilates erfahren.') }
             }
         ]
@@ -1570,15 +1570,20 @@ function initFormAnimations() {
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            // Verifica se o href ATUAL ainda começa com # (pode ter mudado dinamicamente)
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
+            // Se não começar com #, deixa o comportamento padrão (ex: abrir WhatsApp)
         });
     });
 }
